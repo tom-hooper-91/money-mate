@@ -13,7 +13,7 @@ export default function Portfolio () {
 
   return (
     <div className="row">
-      <div className="col-lg-12">
+      <div className="col-lg-12 text-center">
         <h2>Portfolio</h2>
       </div>
       {portfolio.map(entry => {
