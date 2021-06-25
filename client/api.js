@@ -1,11 +1,13 @@
 import request from 'superagent'
 
-const serverURL = 'http://localhost:3000/api/v1'
+const serverURL = 'http://localhost:3000/'
 
-// *** EXAMPLE ***
-export function getWelcome () {
+export function getPorfolio (setPortfolio) {
   return request
-    .get(`${serverURL}/welcome`)
-    .then(response => response.body)
+    .get(`${serverURL}portfolio/`)
+    .then(response => {
+      setPortfolio(response.body)
+      return null
+    })
+    .catch(err => console.log(err))
 }
-// ***   ***   ***
