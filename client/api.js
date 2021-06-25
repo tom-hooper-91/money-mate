@@ -9,9 +9,3 @@ export function getWelcome () {
     .then(response => response.body)
 }
 // ***   ***   ***
-
-export async function getUser () {
-  const result = await request.get('https://randomuser.me/api/')
-  // console.log(result.body)
-  return result.body
-}
