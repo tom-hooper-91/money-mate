@@ -10,9 +10,9 @@ export default function PortfolioEntry ({ name, ticker, buyPrice }) {
   }, [])
 
   return (
-    <div className="col-lg-4 dark-background round-edge ms-5 me-5 text-center">
+    <div className="col-lg-4 dark-background round-edge m-3 text-center">
       <hr />
-      {buyPrice &&
+      {buyPrice && aVData['05. price'] &&
       <>
         <h4>{name}</h4>
         <p><em>Ticker: </em>{ticker}</p>

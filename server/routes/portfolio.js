@@ -15,4 +15,16 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/add', (req, res) => {
+  const postition = req.body
+  db.addPosition(postition)
+    .then((response) => res.json({
+      msg: 'entry added',
+      id: response
+    }))
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
 module.exports = router

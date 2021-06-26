@@ -16,6 +16,8 @@ export function getPorfolio (setPortfolio) {
     .catch(err => console.log(err))
 }
 
+
+
 // external Alpha Vantage API Functions
 
 export function getAVApiDaily (setAVData, ticker) {
