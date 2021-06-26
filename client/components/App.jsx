@@ -11,8 +11,8 @@ export default function App () {
   return (
     <div className='app'>
       <div className="background-image">
-        <Route path='/' component={Nav}/>
         <div className='container round-edge-bottom'>
+          <Route path='/' component={Nav}/>
           <Route path='/' component={Header}/>
           <Route exact path='/' component={Home} />
           <Route exact path='/portfolio' component={Portfolio} />

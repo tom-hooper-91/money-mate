@@ -8,7 +8,7 @@ a, a:hover, a:visited, a:active {
  }
  .background-image {
   background-image: url('/images/background.jpg');
-  height: 100vh;
+  height: 100vh
  }
  .container {
     background-color: #262626;
