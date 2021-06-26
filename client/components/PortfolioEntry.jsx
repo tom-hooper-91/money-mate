@@ -23,7 +23,7 @@ export default function PortfolioEntry ({ name, ticker, buyPrice }) {
           </>
           <hr />
         </div>
-        : <p>Loading...</p>
+        : <h4>Loading...</h4>
       }
     </>
   )

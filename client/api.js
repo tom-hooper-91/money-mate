@@ -70,3 +70,15 @@ export function getAVApiQuote (setAVData, ticker) {
     })
     .catch(err => console.log(err))
 }
+
+export function getAVApiFinancials (setEquity, ticker) {
+  const avApiURL = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${key}`
+
+  return request
+    .get(avApiURL)
+    .then(response => {
+      setEquity(response.body)
+      return null
+    })
+    .catch(err => console.log(err))
+}

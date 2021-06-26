@@ -7,6 +7,7 @@ import Home from './Home'
 import Portfolio from './Portfolio'
 import AddEntry from './AddEntry'
 import EditEntry from './EditEntry'
+import Equity from './Equity'
 
 export default function App () {
   return (
@@ -18,6 +19,7 @@ export default function App () {
         <Route exact path='/portfolio' component={Portfolio} />
         <Route exact path='/portfolio/add' component={AddEntry} />
         <Route exact path='/portfolio/edit' component={EditEntry} />
+        <Route exact path='/equity/:ticker' component={Equity} />
       </div>
     </div>
   )
