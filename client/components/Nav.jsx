@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Nav () {
+  const [ticker, setTicker] = useState('')
+
+  const handleChange = (event) => {
+    setTicker(event.target.value)
+  }
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <div className="container-fluid">
@@ -37,8 +43,8 @@ export default function Nav () {
             </li>
           </ul>
           <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" />
-            <button className="btn btn-outline-success" type="submit">Search</button>
+            <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={ticker}/>
+            <button className="btn btn-outline-success" type="submit" onSubmit={(event) => event.preventDefault()}><Link to={`/equity/${ticker}`}>Search</Link></button>
           </form>
         </div>
       </div>
