@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Nav () {
-  const [ticker, setTicker] = useState('')
-
+export default function Nav ({ ticker, setTicker, setSearch }) {
   const handleChange = (event) => {
     setTicker(event.target.value)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setSearch(true)// this insn't working
   }
 
   return (
@@ -42,9 +45,9 @@ export default function Nav () {
               <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Future Content</a>
             </li>
           </ul>
-          <form className="d-flex">
+          <form className="d-flex" onSubmit={(event) => event.preventDefault()}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={ticker}/>
-            <button className="btn btn-outline-success" type="submit" onSubmit={(event) => event.preventDefault()}><Link to={`/equity/${ticker}`}>Search</Link></button>
+            <button className="btn btn-outline-success" type="submit" onSubmit={(event) => handleSubmit(event)}><Link to={`/equity/${ticker}`}>Search</Link></button>
           </form>
         </div>
       </div>
