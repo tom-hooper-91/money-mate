@@ -14,7 +14,7 @@ export default function Portfolio () {
   return (
     <div className="row">
       <div className="col-lg-12 text-center">
-        <h2>Portfolio</h2>
+        <h1>Portfolio</h1>
         <p>Here you can view which stocks you currently have in your portfolio. This information is stored in a database.  You will also see up to date pricing information from the Alhpa Vantage external API</p>
       </div>
       {portfolio.map(entry => {
