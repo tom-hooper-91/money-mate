@@ -8,7 +8,7 @@ a, a:hover, a:visited, a:active {
   text-decoration: none;
  }
  .container {
-    background-color: #262626;
+    background: rgba(26, 26, 26, 0.8)
  }
 .dark-background {
   background-color: #100c08;
@@ -29,4 +29,7 @@ a, a:hover, a:visited, a:active {
 }
 .hr-red {
   border-top: 2px solid #e42024;
+}
+.thin-text {
+  
 }
