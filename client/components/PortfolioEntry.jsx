@@ -11,9 +11,9 @@ export default function PortfolioEntry ({ name, ticker, buyPrice }) {
 
   return (
     <>
-      {buyPrice && aVData['05. price'] &&
-        <div className="col-lg-3 dark-background round-edge m-5 text-center">
-          <hr />
+      {buyPrice && aVData['05. price']
+        ? <div className="col-lg-3 dark-background round-edge m-5 text-center">
+          <hr className='hr-red'/>
           <>
             <h4>{name}</h4>
             <p><em>Ticker: </em>{ticker}</p>
@@ -21,8 +21,9 @@ export default function PortfolioEntry ({ name, ticker, buyPrice }) {
             <p><em>Current Price:</em> ${aVData['05. price']}</p>
             <p><em>Daily Change:</em> {aVData['10. change percent']}</p>
           </>
-          <hr />
+          <hr className='hr-red' />
         </div>
+        : <p>Loading...</p>
       }
     </>
   )
