@@ -16,8 +16,21 @@ export function getPorfolio (setPortfolio) {
     .catch(err => console.log(err))
 }
 
-
-
+export function addPosition (position, setFormData) {
+  return request
+    .post(`${serverURL}portfolio/add`)
+    .send(position)
+    .then(response => {
+      console.log(response)
+      setFormData({
+        name: '',
+        ticker: '',
+        buy_price: 0
+      })
+      return null
+    })
+    .catch(err => console.log(err))
+}
 // external Alpha Vantage API Functions
 
 export function getAVApiDaily (setAVData, ticker) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-//api func
+const { addPosition } = require('../api')
 
 export default function AddEntry () {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ export default function AddEntry () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    // apiFunc.addWidget(formData, props.setWidgets, setFormData)
+    addPosition(formData, setFormData)
   }
 
   return (
@@ -29,13 +29,13 @@ export default function AddEntry () {
         value={formData.name}
         onChange={(event) => handleChange(event)}/>
       <label htmlFor="ticker">Ticker: </label>
-      <input type="number"
+      <input type="text"
         name="ticker"
         id="ticker"
         value={formData.ticker}
         onChange={(event) => handleChange(event)}/>
       <label htmlFor="buy_price">Buy Price: </label>
-      <input type="text"
+      <input type="number"
         name="buy_price"
         id="buy_price"
         value={formData.buy_price}

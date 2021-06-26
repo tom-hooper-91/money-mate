@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Nav () {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">Money Mate</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,9 @@ export default function Nav () {
             Options
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a className="dropdown-item" href="#">Add Position</a></li>
+                <li>
+                  <Link to='/portfolio/add' className='dropdown-item'>Add Position</Link>
+                </li>
                 <li><a className="dropdown-item" href="#">Edit Position</a></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><a className="dropdown-item" href="#">Something else here</a></li>
