@@ -21,7 +21,21 @@ export function addPosition (position, setFormData) {
     .post(`${serverURL}portfolio/add`)
     .send(position)
     .then(response => {
-      console.log(response)
+      setFormData({
+        name: '',
+        ticker: '',
+        buy_price: 0
+      })
+      return null
+    })
+    .catch(err => console.log(err))
+}
+
+export function editPosition (position, setFormData) {
+  return request
+    .patch(`${serverURL}portfolio/edit`)
+    .send(position)
+    .then(() => {
       setFormData({
         name: '',
         ticker: '',

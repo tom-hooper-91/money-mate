@@ -25,7 +25,9 @@ export default function Nav () {
                 <li>
                   <Link to='/portfolio/add' className='dropdown-item'>Add Position</Link>
                 </li>
-                <li><a className="dropdown-item" href="#">Edit Position</a></li>
+                <li>
+                  <Link to='/portfolio/edit' className='dropdown-item'>Edit Position</Link>
+                </li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><a className="dropdown-item" href="#">Something else here</a></li>
               </ul>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const { addPosition } = require('../api')
+import { addPosition } from '../api'
 
 export default function AddEntry () {
   const [formData, setFormData] = useState({
