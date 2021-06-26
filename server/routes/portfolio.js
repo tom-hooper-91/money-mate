@@ -20,8 +20,24 @@ router.post('/add', (req, res) => {
   db.addPosition(postition)
     .then((response) => res.json({
       msg: 'entry added',
-      id: response
+      new_id: response
     }))
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.patch('/edit', (req, res) => {
+  const position = req.body
+  console.log('patch route position ', position)
+  db.editPosition(position)
+    .then(result => {
+      res.json({
+        msg: 'entry updated',
+        updated: result
+      })
+      return null
+    })
     .catch(err => {
       res.status(500).send(err.message)
     })
