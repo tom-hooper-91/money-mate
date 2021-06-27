@@ -12,12 +12,12 @@ import Equity from './Equity'
 export default function App () {
   const [ticker, setTicker] = useState('')
   const [equity, setEquity] = useState({})
-  const [search, setSearch] = useState(false)// this isn't working
+  const [search, setSearch] = useState('')// this isn't working
 
   return (
     <div className='app'>
       <div className='container round-edge-bottom'>
-        <Route path='/'><Nav ticker={ticker} setTicker={setTicker} setEquity={setEquity} setSearch={setSearch}/></Route>
+        <Route path='/'><Nav ticker={ticker} setTicker={setTicker} search={search} setSearch={setSearch}/></Route>
         <Route path='/' component={Header}/>
         <Route exact path='/' component={Home} />
         <Route exact path='/portfolio' component={Portfolio} />

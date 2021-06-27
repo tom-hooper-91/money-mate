@@ -4,12 +4,12 @@ import { getAVApiFinancials } from '../api'
 
 export default function Equity ({ ticker, setTicker, equity, setEquity, search }) {
   useEffect(() => {
-    getAVApiFinancials(setEquity, ticker)
-  }, [])
+    getAVApiFinancials(setEquity, search)
+  }, []) // make this conditional with ticker
 
   // useEffect(() => {
   //   getAVApiFinancials(setEquity, ticker)
-  // }, [search])// this isn't working
+  // }, [ticker])
 
   return (
     <div className="row">

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Nav ({ ticker, setTicker, setSearch }) {
+export default function Nav ({ ticker, setTicker, search, setSearch }) {
   const handleChange = (event) => {
-    setTicker(event.target.value)
+    setSearch(event.target.value)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setSearch(true)// this insn't working
-  }
+    setTicker(search)
+  }// this function is never being called due to Link?
 
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -46,8 +46,8 @@ export default function Nav ({ ticker, setTicker, setSearch }) {
             </li>
           </ul>
           <form className="d-flex" onSubmit={(event) => event.preventDefault()}>
-            <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={ticker}/>
-            <button className="btn btn-outline-success" type="submit" onSubmit={(event) => handleSubmit(event)}><Link to={`/equity/${ticker}`}>Search</Link></button>
+            <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
+            <Link to={`/equity/${search}`}><button className="btn btn-outline-success" type="submit" onSubmit={(event) => handleSubmit(event)}>Search</button></Link>
           </form>
         </div>
       </div>
