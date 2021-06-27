@@ -20,7 +20,7 @@ export default function Portfolio () {
           <hr className='mt-5'/>
         </div>
       </div>
-      <div className="row">
+      <div className="row justify-content-center">
         {portfolio.map(entry => {
           return <PortfolioEntry key={entry.id} name={entry.name} ticker={entry.ticker} buyPrice={entry.buy_price}/>
         })}
