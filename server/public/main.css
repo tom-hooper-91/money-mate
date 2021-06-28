@@ -17,7 +17,7 @@ a, a:hover, a:visited, a:active {
   border-radius: 2px !important;
 }
 .bg-dark {
-  background: linear-gradient(#454545, #262626) !important;
+  background: linear-gradient(#262626, #454545 ) !important; 
 }
 .round-edge-top {
   border-top-left-radius: 5px;
@@ -34,3 +34,12 @@ a, a:hover, a:visited, a:active {
   /* border-collapse: collapse; */
   border: 1px solid #fff;
 }
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  background: linear-gradient(#454545, #262626);
+}
+
