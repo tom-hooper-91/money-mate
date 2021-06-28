@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { getAVApiQuote } from '../api'
 
-export default function PortfolioEntry ({ name, ticker, buyPrice }) {
+export default function PortfolioEntry ({ name, ticker, buyPrice, shares }) {
   const [aVData, setAVData] = useState([])
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function PortfolioEntry ({ name, ticker, buyPrice }) {
             <p><em>Ticker: </em>{ticker}</p>
             <p><em>Buy Price: </em>${buyPrice.toFixed(2)}</p>
             <p><em>Current Price:</em> ${aVData['05. price']}</p>
+            <p><em>Number of Shares: </em>{shares}</p>
             <p><em>Daily Change:</em> {aVData['10. change percent']}</p>
           </>
           <hr />

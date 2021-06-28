@@ -22,7 +22,7 @@ export default function Portfolio () {
       </div>
       <div className="row justify-content-center">
         {portfolio.map(entry => {
-          return <PortfolioEntry key={entry.id} name={entry.name} ticker={entry.ticker} buyPrice={entry.buy_price}/>
+          return <PortfolioEntry key={entry.id} name={entry.name} ticker={entry.ticker} buyPrice={entry.buy_price} shares={entry.number_shares}/>
         })}
         <hr />
       </div>

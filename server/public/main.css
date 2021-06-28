@@ -30,6 +30,7 @@ a, a:hover, a:visited, a:active {
 .hr-red {
   border-top: 2px solid #e42024;
 }
-.thin-text {
-  
+.equity-table {
+  /* border-collapse: collapse; */
+  border: 1px solid #fff;
 }
