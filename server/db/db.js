@@ -4,7 +4,8 @@ const connection = require('knex')(config)
 module.exports = {
   getPortfolio,
   addPosition,
-  editPosition
+  editPosition,
+  deletePosition
 }
 
 function getPortfolio (db = connection) {
@@ -18,8 +19,13 @@ function addPosition (position, db = connection) {
 }
 
 function editPosition (position, db = connection) {
-  console.log('DB - position is ', position)
   return db('portfolio')
     .where('id', position.id)
     .update(position)
+}
+
+function deletePosition (id, db = connection) {
+  return db('portfolio')
+    .where('id', id)
+    .del()
 }

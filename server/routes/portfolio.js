@@ -29,12 +29,26 @@ router.post('/add', (req, res) => {
 
 router.patch('/edit', (req, res) => {
   const position = req.body
-  console.log('patch route position ', position)
   db.editPosition(position)
     .then(result => {
       res.json({
         msg: 'entry updated',
         updated: result
+      })
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.delete('/edit', (req, res) => {
+  const id = req.body.id
+  db.deletePosition(id)
+    .then(result => {
+      res.json({
+        msg: 'entry deleted',
+        deleted: result
       })
       return null
     })

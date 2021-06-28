@@ -2,14 +2,10 @@ import React, { useEffect } from 'react'
 
 import { getAVApiFinancials } from '../api'
 
-export default function Equity ({ ticker, setTicker, equity, setEquity, search }) {
+export default function Equity ({setEquity, search, equity}) {
   useEffect(() => {
     getAVApiFinancials(setEquity, search)
   }, []) // make this conditional with ticker
-
-  // useEffect(() => {
-  //   getAVApiFinancials(setEquity, ticker)
-  // }, [ticker])
 
   const numberWithCommas = (num) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
