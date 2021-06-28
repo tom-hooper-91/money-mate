@@ -45,6 +45,14 @@ export function editPosition (position, setFormData) {
     })
     .catch(err => console.log(err))
 }
+
+export function deletePosition (id) {
+  return request
+    .delete(`${serverURL}portfolio/edit`)
+    .send(id)
+    .then()
+    .catch(err => console.log(err))
+}
 // external Alpha Vantage API Functions
 
 export function getAVApiDaily (setAVData, ticker) {

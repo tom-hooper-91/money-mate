@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { editPosition, getPorfolio } from '../api'
+import { editPosition, getPorfolio, deletePosition } from '../api'
 
 export default function EditEntry () {
   const [formData, setFormData] = useState({
@@ -29,12 +29,18 @@ export default function EditEntry () {
     setFormData(portfolio.find(entry => entry.id === id))
   }
 
+  const handleDelete = (event, id) => {
+    event.preventDefault()
+    deletePosition({id})
+    getPorfolio(setPortfolio)
+  }
+
   return (
     <>
       <ul>
         {portfolio.length &&
         portfolio.map(entry => {
-          return <li key={entry.id}>{entry.name} <button onClick={() => handleSelect(entry.id)}>Edit</button></li>
+          return <li key={entry.id}>{entry.name} <button onClick={() => handleSelect(entry.id)}>Edit</button><button onClick={(event) => handleDelete(event, entry.id)}>Delete</button></li>
         })
         }
       </ul>
