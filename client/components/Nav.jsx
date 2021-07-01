@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Nav ({ ticker, setTicker, search, setSearch }) {
+export default function Nav ({ setTicker }) {
+  const [search, setSearch] = useState('')
   const handleChange = (event) => {
     setSearch(event.target.value)
   }
 
-  const handleSubmit = (event) => {
+  const handleClick = (event) => {
     event.preventDefault()
     setTicker(search)
   }// this function is never being called due to Link?
@@ -47,7 +48,7 @@ export default function Nav ({ ticker, setTicker, search, setSearch }) {
           </ul>
           <form className="d-flex" onSubmit={(event) => event.preventDefault()}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
-            <Link to={`/equity/${search}`}><button className="btn btn-outline-success" type="submit" onSubmit={(event) => handleSubmit(event)}>Search</button></Link>
+            <button className="btn btn-outline-success" type="submit" onClick={(event) => handleClick(event)}><Link to={`/equity/${search}`}>Search</Link></button>
           </form>
         </div>
       </div>

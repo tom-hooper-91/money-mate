@@ -13,11 +13,11 @@ import Equity from './Equity'
 export default function App () {
   const [ticker, setTicker] = useState('')
   const [equity, setEquity] = useState({})
-  const [search, setSearch] = useState('')// this isn't working
+  // const [search, setSearch] = useState('')// this isn't working
 
   return (
     <div className='app'>
-        <Route path='/'><Nav ticker={ticker} setTicker={setTicker} search={search} setSearch={setSearch}/></Route>
+      <Route path='/'><Nav ticker={ticker} setTicker={setTicker} /></Route>
       <div className='container round-edge-bottom'>
         <Route path='/' component={Header} />
         <Route path='/' component={Footer} />
@@ -25,7 +25,7 @@ export default function App () {
         <Route exact path='/portfolio' component={Portfolio} />
         <Route exact path='/portfolio/add' component={AddEntry} />
         <Route exact path='/portfolio/edit' component={EditEntry} />
-        <Route exact path='/equity/:ticker'><Equity ticker={ticker} equity={equity} setEquity={setEquity} search={search}/></Route>
+        <Route exact path='/equity/:ticker'><Equity ticker={ticker} equity={equity} setEquity={setEquity} /></Route>
       </div>
     </div>
   )
