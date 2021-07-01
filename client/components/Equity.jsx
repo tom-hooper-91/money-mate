@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 
 import { getAVApiFinancials } from '../api'
 
-export default function Equity ({setEquity, ticker, equity}) {
+export default function Equity ({ setEquity, ticker, equity }) {
   useEffect(() => {
     getAVApiFinancials(setEquity, ticker)
-  }, [ticker]) // make this conditional with ticker
+  }, [ticker])// when ticker changes from search button click in nav, re-render the page with a new api call
 
   const numberWithCommas = (num) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')

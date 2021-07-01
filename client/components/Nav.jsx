@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Nav ({ setTicker }) {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('') // state for search bar
   const handleChange = (event) => {
     setSearch(event.target.value)
   }
 
-  const handleClick = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
     setTicker(search)
-  }// this function is never being called due to Link?
+  }// Submit and set ticker to result of search bar text which is used for re rendering equity
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-sm navbar-dark dark-background mb-5">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">MM</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,9 +46,9 @@ export default function Nav ({ setTicker }) {
               <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Future Content</a>
             </li>
           </ul>
-          <form className="d-flex" onSubmit={(event) => event.preventDefault()}>
+          <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
-            <button className="btn btn-outline-success" type="submit" onClick={(event) => handleClick(event)}><Link to={`/equity/${search}`}>Search</Link></button>
+            <button className="btn btn-outline-success" type="submit"><Link to={`/equity/${search}`}>Search</Link></button>
           </form>
         </div>
       </div>

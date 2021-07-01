@@ -15,7 +15,7 @@ export default function Portfolio () {
     <>
       <div className="row">
         <div className="col-lg-12 text-center">
-          <h1>Portfolio</h1>
+          <h1 className="fw-lighter">Portfolio</h1>
           <p>Here you can view which stocks you currently have in your portfolio. This information is stored in a database.  You will also see up to date pricing information from the Alhpa Vantage external API</p>
           <hr className='mt-5'/>
         </div>

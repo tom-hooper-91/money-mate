@@ -8,7 +8,8 @@ a, a:hover, a:visited, a:active {
   text-decoration: none;
  }
  .container {
-    background: rgba(26, 26, 26, 0.8)
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(4px);
  }
 .dark-background {
   background-color: #100c08;
@@ -31,7 +32,6 @@ a, a:hover, a:visited, a:active {
   border-top: 2px solid #e42024;
 }
 .equity-table {
-  /* border-collapse: collapse; */
   border: 1px solid #fff;
 }
 .footer {
@@ -40,6 +40,13 @@ a, a:hover, a:visited, a:active {
   bottom: 0;
   width: 100%;
   text-align: left;
-  background: linear-gradient(#454545, #262626);
+  /* background: linear-gradient(#454545, #262626); */
 }
+.gainer {
+  color: green;
+}
+.looser {
+  color: red;
+}
+
 

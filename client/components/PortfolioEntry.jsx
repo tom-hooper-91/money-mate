@@ -12,7 +12,7 @@ export default function PortfolioEntry ({ name, ticker, buyPrice, shares }) {
   return (
     <>
       {buyPrice && aVData['05. price']
-        ? <div className="col-lg-3 dark-background round-edge text-center border m-3">
+        ? <div className="col-lg-3 dark-background round-edge text-center border m-3 shadow">
           <hr />
           <>
             <h4>{name}</h4>
@@ -20,7 +20,7 @@ export default function PortfolioEntry ({ name, ticker, buyPrice, shares }) {
             <p><em>Buy Price: </em> ${buyPrice.toFixed(2)}</p>
             <p><em>Current Price:</em> ${aVData['05. price']}</p>
             <p><em>Number of Shares: </em>{shares}</p>
-            <p><em>Daily Change:</em> <span>{aVData['10. change percent']}</span></p>
+            <p><em>Daily Change:</em> <span className={Number(aVData['09. change']) > 0 ? 'gainer' : 'looser'}>{aVData['10. change percent']}</span></p>
           </>
           <hr />
         </div>
