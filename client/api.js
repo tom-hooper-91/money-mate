@@ -50,7 +50,7 @@ export function deletePosition (id) {
   return request
     .delete(`${serverURL}portfolio/edit`)
     .send(id)
-    .then()
+    .then(() => null)
     .catch(err => console.log(err))
 }
 // external Alpha Vantage API Functions

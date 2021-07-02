@@ -13,7 +13,6 @@ import Equity from './Equity'
 export default function App () {
   const [ticker, setTicker] = useState('')
   const [equity, setEquity] = useState({})
-  // const [search, setSearch] = useState('')// this isn't working
 
   return (
     <div className='app'>

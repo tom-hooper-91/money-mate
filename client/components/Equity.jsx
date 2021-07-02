@@ -26,7 +26,7 @@ export default function Equity ({ setEquity, ticker, equity }) {
                     <th>Value</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody border='1'>
                   <tr>
                     <th>Market Cap </th>
                     <td>${numberWithCommas(equity.MarketCapitalization)}</td>
