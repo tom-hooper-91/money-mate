@@ -8,7 +8,8 @@ jest.mock('./db/db', () => { // mock functions
       { id: 2, name: 'Alibaba group', ticker: 'BABA', buy_price: 227.30, number_shares: 9 }
     ]),
     addPosition: () => Promise.resolve(1234),
-    editPosition: () => Promise.resolve(1)
+    editPosition: () => Promise.resolve(1),
+    deletePosition: () => Promise.resolve(1)
   }
 })
 
@@ -47,6 +48,18 @@ test('can edit a position', () => {
     .send(position)
     .then(res => {
       const actual = res.body.updated
+      return expect(actual).toEqual(expected)
+    })
+})
+
+test('can delete a position', () => {
+  const expected = 1
+  const position = { id: 1 }
+  return request(server)
+    .delete('/portfolio/edit')
+    .send(position)
+    .then(res => {
+      const actual = res.body.deleted
       return expect(actual).toEqual(expected)
     })
 })
