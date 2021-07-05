@@ -19,3 +19,16 @@ test('getPortfolio gets all positions', () => {
       return null
     })
 })
+
+test('addPosition adds a position', () => {
+  const testPosition = {
+    name: 'Berkshire Hathaway',
+    ticker: 'BRK.B',
+    buy_price: 175
+  }
+  return db.addPosition(testPosition, testDb)
+    .then(actual => {
+      console.log(actual)
+      return expect(actual[0]).toEqual(3)
+    })
+})
