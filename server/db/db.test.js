@@ -28,7 +28,19 @@ test('addPosition adds a position', () => {
   }
   return db.addPosition(testPosition, testDb)
     .then(actual => {
-      console.log(actual)
       return expect(actual[0]).toEqual(3)
+    })
+})
+
+test('editPosition edits a position', () => {
+  const testPosition = {
+    id: 2,
+    name: 'Alibaba Group',
+    ticker: 'BABA',
+    buy_price: 227.3
+  }
+  return db.editPosition(testPosition, testDb)
+    .then(actual => {
+      return expect(actual).toEqual(1)
     })
 })
