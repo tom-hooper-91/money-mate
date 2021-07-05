@@ -44,3 +44,13 @@ test('editPosition edits a position', () => {
       return expect(actual).toEqual(1)
     })
 })
+
+test('deletePosition deletes a position', () => {
+  const testPosition = {
+    id: 1
+  }
+  return db.deletePosition(testPosition.id, testDb)
+    .then(actual => {
+      return expect(actual).toEqual(1)
+    })
+})
