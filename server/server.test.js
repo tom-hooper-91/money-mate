@@ -21,20 +21,20 @@ test('can get portfolio on /portfolio', () => {
     })
 })
 
-// test('can add a position', () => {
-//   const expected = 1234
-//   const newPosition = {
-//     name: 'Apple',
-//     ticker: 'AAPL',
-//     buy_price: 80.20,
-//     number_shares: 100
-//   }
-//   return request(server)
-//     .post('portfolio/add')
-//     .send(newPosition)
-//     .then(res => {
-//       console.log('res.body', res.body)
-//       const actual = res.body.new_id
-//       return expect(actual).toEqual(expected)
-//     })
-// })
+test('can add a position', () => {
+  const expected = 1234
+  const newPosition = {
+    name: 'Apple',
+    ticker: 'AAPL',
+    buy_price: 80.20,
+    number_shares: 100
+  }
+  return request(server)
+    .post('/portfolio/add')
+    .send(newPosition)
+    .then(res => {
+      console.log('res.body', res.body)
+      const actual = res.body.new_id[0]
+      return expect(actual).toEqual(expected)
+    })
+})
