@@ -7,7 +7,8 @@ jest.mock('./db/db', () => { // mock functions
       { id: 1, name: 'Seritage Growth Properties', ticker: 'SRG', buy_price: 11.77, number_shares: 116 },
       { id: 2, name: 'Alibaba group', ticker: 'BABA', buy_price: 227.30, number_shares: 9 }
     ]),
-    addPosition: () => Promise.resolve([1234])
+    addPosition: () => Promise.resolve(1234),
+    editPosition: () => Promise.resolve(1)
   }
 })
 
@@ -33,8 +34,19 @@ test('can add a position', () => {
     .post('/portfolio/add')
     .send(newPosition)
     .then(res => {
-      console.log('res.body', res.body)
-      const actual = res.body.new_id[0]
+      const actual = res.body.new_id
+      return expect(actual).toEqual(expected)
+    })
+})
+
+test('can edit a position', () => {
+  const expected = 1
+  const position = { id: 1, name: 'Seritage Growth Properties', ticker: 'SRG', buy_price: 11.77, number_shares: 80 }
+  return request(server)
+    .patch('/portfolio/edit')
+    .send(position)
+    .then(res => {
+      const actual = res.body.updated
       return expect(actual).toEqual(expected)
     })
 })
