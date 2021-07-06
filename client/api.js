@@ -4,7 +4,7 @@ const serverURL = 'http://localhost:3000/'
 
 const key = '03DDZXXS6TMIXSJ5'
 
-// internal API functions
+// ---- internal API functions ----
 
 export function getPorfolio () {
   return request
@@ -15,17 +15,12 @@ export function getPorfolio () {
     .catch(err => console.log(err))
 }
 
-export function addPosition (position, setFormData) {
+export function addPosition (position) {
   return request
     .post(`${serverURL}portfolio/add`)
     .send(position)
     .then(response => {
-      setFormData({
-        name: '',
-        ticker: '',
-        buy_price: 0
-      })
-      return null
+      return response.body
     })
     .catch(err => console.log(err))
 }
@@ -52,7 +47,8 @@ export function deletePosition (id) {
     .then(() => null)
     .catch(err => console.log(err))
 }
-// external Alpha Vantage API Functions
+
+// ---- external Alpha Vantage API Functions ----
 
 export function getAVApiDaily (setAVData, ticker) {
   const avApiURL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&interval=5min&apikey=${key}`
