@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
 import PortfolioEntry from './PortfolioEntry'
 
-import { getPorfolio } from '../api'
+import { fetchPortfolio } from '../actions'
 
-export default function Portfolio () {
-  const [portfolio, setPortfolio] = useState([])
-
+function Portfolio ({ dispatch, portfolio }) {
   useEffect(() => {
-    getPorfolio(setPortfolio)
+    dispatch(fetchPortfolio())
   }, [])
 
   return (
@@ -17,7 +16,6 @@ export default function Portfolio () {
         <div className="col-lg-4 text-center align-center">
           <h1 className="fw-lighter">Portfolio</h1>
           <p>Here you can view which stocks you currently have in your portfolio. This information is stored in a database.  You will also see up to date pricing information from the Alhpa Vantage external API</p>
-          {/* <hr className='mt-5'/> */}
         </div>
       </div>
       <div className="row justify-content-center">
@@ -30,3 +28,11 @@ export default function Portfolio () {
     </>
   )
 }
+
+const mapStateToProps = (globalState) => {
+  return {
+    portfolio: globalState.portfolio
+  }
+}
+
+export default connect(mapStateToProps)(Portfolio)

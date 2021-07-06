@@ -6,12 +6,11 @@ const key = '03DDZXXS6TMIXSJ5'
 
 // internal API functions
 
-export function getPorfolio (setPortfolio) {
+export function getPorfolio () {
   return request
     .get(`${serverURL}portfolio/`)
     .then(response => {
-      setPortfolio(response.body)
-      return null
+      return response.body
     })
     .catch(err => console.log(err))
 }
