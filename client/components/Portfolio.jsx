@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 
 import PortfolioEntry from './PortfolioEntry'
 
-import { fetchPortfolio } from '../actions'
+// import { fetchPortfolio } from '../actions'
 
 function Portfolio ({ dispatch, portfolio }) {
-  useEffect(() => {
-    dispatch(fetchPortfolio())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchPortfolio())
+  // }, [])
 
   return (
     <>

@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { fetchPortfolio, fetchAVQuote } from '../actions'
 
 import Header from './Header'
 import Nav from './Nav'
@@ -10,7 +13,11 @@ import AddEntry from './AddEntry'
 import EditEntry from './EditEntry'
 import Equity from './Equity'
 
-export default function App () {
+function App ({ dispatch }) {
+  useEffect(() => {
+    dispatch(fetchPortfolio())
+  }, [])
+
   const [ticker, setTicker] = useState('')
   const [equity, setEquity] = useState({})
 
@@ -29,3 +36,5 @@ export default function App () {
     </div>
   )
 }
+
+export default connect()(App)

@@ -13,22 +13,31 @@ function PortfolioEntry ({ name, ticker, buyPrice, shares, dispatch, quote }) {
   }, [])
 
   return (
+    // <>
+    //   {buyPrice && quote['05. price']
+    //     ? <div className="col-lg-3 dark-background round-edge text-center border m-3 shadow">
+    //       <hr />
+    //       <>
+    //         <h4>{name}</h4>
+    //         <p><em>Ticker: </em> {ticker}</p>
+    //         <p><em>Buy Price: </em> ${buyPrice.toFixed(2)}</p>
+    //         <p><em>Current Price:</em> ${quote['05. price']}</p>
+    //         <p><em>Number of Shares: </em>{shares}</p>
+    //         <p><em>Daily Change:</em> <span className={Number(quote['09. change']) > 0 ? 'gainer' : 'looser'}>{quote['10. change percent']}</span></p>
+    //       </>
+    //       <hr />
+    //     </div>
+    //     : <h4>Loading...</h4>
+    //   }
+    // </>
     <>
-      {buyPrice && quote['05. price']
-        ? <div className="col-lg-3 dark-background round-edge text-center border m-3 shadow">
-          <hr />
-          <>
-            <h4>{name}</h4>
-            <p><em>Ticker: </em> {ticker}</p>
-            <p><em>Buy Price: </em> ${buyPrice.toFixed(2)}</p>
-            <p><em>Current Price:</em> ${quote['05. price']}</p>
-            <p><em>Number of Shares: </em>{shares}</p>
-            <p><em>Daily Change:</em> <span className={Number(quote['09. change']) > 0 ? 'gainer' : 'looser'}>{quote['10. change percent']}</span></p>
-          </>
-          <hr />
-        </div>
-        : <h4>Loading...</h4>
-      }
+      <div className="col-lg-3 dark-background round-edge text-center border m-3 shadow">
+        <hr />
+        <h4>{name}</h4>
+        <p><em>Ticker: </em> {ticker}</p>
+        <p><em>Buy Price: </em> ${buyPrice.toFixed(2)}</p>
+        <p><em>Number of Shares: </em>{shares}</p>
+      </div>
     </>
   )
 }
