@@ -57,13 +57,14 @@ export function getAVApiDaily (setAVData, ticker) {
     .catch(err => console.log(err))
 }
 
-export function getAVApiQuote (setAVData, ticker) {
+export function getAVApiQuote (ticker) {
   const avApiURL = `https:www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`
 
   return request
     .get(avApiURL)
     .then(response => {
-      setAVData(response.body['Global Quote'])
+      // setAVData(response.body['Global Quote'])
+      console.log('response in api call is ----', response)
       return null
     })
     .catch(err => console.log(err))

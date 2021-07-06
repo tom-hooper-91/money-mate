@@ -28,7 +28,7 @@ function EditEntry ({ dispatch, portfolio }) {
       ticker: '',
       buy_price: 0
     })
-    dispatch(fetchPortfolio())
+    // dispatch(fetchPortfolio())
   }
 
   const handleSelect = (id) => {
@@ -38,7 +38,6 @@ function EditEntry ({ dispatch, portfolio }) {
   const handleDelete = (event, id) => {
     event.preventDefault()
     dispatch(deleteOnePosition({ id }))
-    dispatch(fetchPortfolio())
   }
 
   return (

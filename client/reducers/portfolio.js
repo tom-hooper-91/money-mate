@@ -1,4 +1,4 @@
-import { SET_PORTFOLIO, ADD_POSITION, EDIT_POSITION } from '../actions'
+import { SET_PORTFOLIO, ADD_POSITION, EDIT_POSITION, DELETE_POSITION } from '../actions'
 
 const initialState = []
 
@@ -9,11 +9,12 @@ const reducer = (state = initialState, action) => {
     case ADD_POSITION:
       return [...state, action.position]
     case EDIT_POSITION:
-      // eslint-disable-next-line no-case-declarations
-      let existingPosition = state.find(pos => pos.id === action.position.id)
-      // eslint-disable-next-line no-unused-vars
-      existingPosition = action.position
-      return [...state]
+      return state.map(pos => {
+        if (pos.id === action.position.id) return action.position
+        else return pos
+      })
+    case DELETE_POSITION:
+      return state.filter(pos => pos.id !== action.id)
     default:
       return state
   }

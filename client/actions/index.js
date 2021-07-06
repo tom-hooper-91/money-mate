@@ -1,11 +1,13 @@
-import { getPorfolio, addPosition, editPosition, deletePosition } from '../api'
+import { getPorfolio, addPosition, editPosition, deletePosition, getAVApiQuote } from '../api'
 
 export const SET_PORTFOLIO = 'SET_PORTFOLIO'
 export const ADD_POSITION = 'ADD_POSITION'
 export const EDIT_POSITION = 'EDIT_POSITION'
 export const DELETE_POSITION = 'DELETE_POSITION'
 
-// ----- ACTION CREATORS -----
+export const GET_AVQUOTE = 'GET_AVQUOTE'
+
+// -----PORTFOLIO ACTION CREATORS -----
 
 export function setPortfolio (portfolio) {
   return {
@@ -32,6 +34,15 @@ export function delPosition (id) {
   return {
     type: DELETE_POSITION,
     id
+  }
+}
+
+// ----- AV ACTION CREATORS -----
+
+export function setQuote (ticker) {
+  return {
+    type: GET_AVQUOTE,
+    quote: ticker
   }
 }
 
@@ -74,5 +85,19 @@ export function deleteOnePosition (id) {
         dispatch(delPosition(id))
         return null
       })
+  }
+}
+
+// -----EXTERNAL API THUNKS -----
+
+export function fetchAVQuote (ticker) {
+  return dispatch => {
+    getAVApiQuote(ticker)
+      .then(quote => {
+        console.log(quote)
+        dispatch(setQuote(ticker))
+        return null
+      })
+      .catch(err => console.log(err))
   }
 }
