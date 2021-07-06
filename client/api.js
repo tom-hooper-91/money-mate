@@ -4,9 +4,9 @@ const serverURL = 'http://localhost:3000/'
 
 const key = '03DDZXXS6TMIXSJ5'
 
-// ---- internal API functions ----
+// ---- internal API functions using Redux ----
 
-export function getPorfolio () { // using redux
+export function getPorfolio () {
   return request
     .get(`${serverURL}portfolio/`)
     .then(response => {
@@ -15,7 +15,7 @@ export function getPorfolio () { // using redux
     .catch(err => console.log(err))
 }
 
-export function addPosition (position) { // using redux
+export function addPosition (position) {
   return request
     .post(`${serverURL}portfolio/add`)
     .send(position)
@@ -25,7 +25,7 @@ export function addPosition (position) { // using redux
     .catch(err => console.log(err))
 }
 
-export function editPosition (position) { // using redux
+export function editPosition (position) {
   return request
     .patch(`${serverURL}portfolio/edit`)
     .send(position)

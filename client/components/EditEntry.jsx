@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchPortfolio, editOnePosition } from '../actions'
-
-import { getPorfolio, deletePosition } from '../api'
+import { fetchPortfolio, editOnePosition, deleteOnePosition } from '../actions'
 
 function EditEntry ({ dispatch, portfolio }) {
   const [formData, setFormData] = useState({
@@ -39,8 +37,8 @@ function EditEntry ({ dispatch, portfolio }) {
 
   const handleDelete = (event, id) => {
     event.preventDefault()
-    deletePosition({ id })
-    getPorfolio(setPortfolio)
+    dispatch(deleteOnePosition({ id }))
+    dispatch(fetchPortfolio())
   }
 
   return (
