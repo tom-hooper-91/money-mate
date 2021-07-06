@@ -6,7 +6,7 @@ const key = '03DDZXXS6TMIXSJ5'
 
 // ---- internal API functions ----
 
-export function getPorfolio () {
+export function getPorfolio () { // using redux
   return request
     .get(`${serverURL}portfolio/`)
     .then(response => {
@@ -15,7 +15,7 @@ export function getPorfolio () {
     .catch(err => console.log(err))
 }
 
-export function addPosition (position) {
+export function addPosition (position) { // using redux
   return request
     .post(`${serverURL}portfolio/add`)
     .send(position)
@@ -25,17 +25,12 @@ export function addPosition (position) {
     .catch(err => console.log(err))
 }
 
-export function editPosition (position, setFormData) {
+export function editPosition (position) { // using redux
   return request
     .patch(`${serverURL}portfolio/edit`)
     .send(position)
-    .then(() => {
-      setFormData({
-        name: '',
-        ticker: '',
-        buy_price: 0
-      })
-      return null
+    .then(response => {
+      return response.body
     })
     .catch(err => console.log(err))
 }

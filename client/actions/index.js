@@ -1,7 +1,8 @@
-import { getPorfolio, addPosition } from '../api'
+import { getPorfolio, addPosition, editPosition } from '../api'
 
 export const SET_PORTFOLIO = 'SET_PORTFOLIO'
 export const ADD_POSITION = 'ADD_POSITION'
+export const EDIT_POSITION = 'EDIT_POSITION'
 
 // ----- ACTION CREATORS -----
 
@@ -15,6 +16,13 @@ export function setPortfolio (portfolio) {
 export function createPosition (position) {
   return {
     type: ADD_POSITION,
+    position
+  }
+}
+
+export function alterPosition (position) {
+  return {
+    type: EDIT_POSITION,
     position
   }
 }
@@ -36,6 +44,16 @@ export function addNewPosition (position) {
     return addPosition(position)
       .then(response => {
         dispatch(createPosition(position))
+        return null
+      })
+  }
+}
+
+export function editOnePosition (position) {
+  return dispatch => {
+    return editPosition(position)
+      .then(response => {
+        dispatch(alterPosition(position))
         return null
       })
   }
