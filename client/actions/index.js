@@ -30,7 +30,7 @@ export function alterPosition (position) {
   }
 }
 
-export function delPosition (id) {
+export function delPosition ({ id }) {
   return {
     type: DELETE_POSITION,
     id

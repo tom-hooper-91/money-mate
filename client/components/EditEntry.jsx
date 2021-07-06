@@ -28,7 +28,6 @@ function EditEntry ({ dispatch, portfolio }) {
       ticker: '',
       buy_price: 0
     })
-    // dispatch(fetchPortfolio())
   }
 
   const handleSelect = (id) => {

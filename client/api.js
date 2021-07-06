@@ -39,7 +39,9 @@ export function deletePosition (id) {
   return request
     .delete(`${serverURL}portfolio/edit`)
     .send(id)
-    .then(() => null)
+    .then(response => {
+      return response.body
+    })
     .catch(err => console.log(err))
 }
 
@@ -63,8 +65,6 @@ export function getAVApiQuote (ticker) {
   return request
     .get(avApiURL)
     .then(response => {
-      // setAVData(response.body['Global Quote'])
-      console.log('response in api call is ----', response)
       return null
     })
     .catch(err => console.log(err))
