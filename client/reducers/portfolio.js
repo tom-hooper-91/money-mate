@@ -14,7 +14,6 @@ const reducer = (state = initialState, action) => {
         else return pos
       })
     case DELETE_POSITION:
-      console.log(action)
       return state.filter(pos => pos.id !== action.id)
     default:
       return state

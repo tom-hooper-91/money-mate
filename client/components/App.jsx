@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { fetchPortfolio, fetchAVQuote } from '../actions'
+import { fetchPortfolio } from '../actions'
 
 import Header from './Header'
 import Nav from './Nav'

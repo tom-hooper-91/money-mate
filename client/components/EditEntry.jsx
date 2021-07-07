@@ -85,7 +85,8 @@ function EditEntry ({ dispatch, portfolio }) {
 
 const mapStateToProps = (globalState) => {
   return {
-    portfolio: globalState.portfolio
+    portfolio: globalState.portfolio,
+    quote: globalState.quote
   }
 }
 

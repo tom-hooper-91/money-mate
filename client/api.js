@@ -65,7 +65,7 @@ export function getAVApiQuote (ticker) {
   return request
     .get(avApiURL)
     .then(response => {
-      return null
+      return response.body
     })
     .catch(err => console.log(err))
 }

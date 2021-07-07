@@ -1,15 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-
 import PortfolioEntry from './PortfolioEntry'
 
-// import { fetchPortfolio } from '../actions'
-
-function Portfolio ({ dispatch, portfolio }) {
-  // useEffect(() => {
-  //   dispatch(fetchPortfolio())
-  // }, [])
-
+function Portfolio ({ portfolio }) {
   return (
     <>
       <div className="row justify-content-center">
@@ -21,7 +14,9 @@ function Portfolio ({ dispatch, portfolio }) {
       <div className="row justify-content-center">
         <hr />
         {portfolio.map(entry => {
-          return <PortfolioEntry key={entry.id} name={entry.name} ticker={entry.ticker} buyPrice={entry.buy_price} shares={entry.number_shares}/>
+          return (
+            <PortfolioEntry key ={entry.id} entry={entry}/>
+          )
         })}
         <hr />
       </div>

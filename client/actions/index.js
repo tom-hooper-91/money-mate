@@ -39,10 +39,10 @@ export function delPosition ({ id }) {
 
 // ----- AV ACTION CREATORS -----
 
-export function setQuote (ticker) {
+export function setQuote (quote) {
   return {
     type: GET_AVQUOTE,
-    quote: ticker
+    quote
   }
 }
 
@@ -53,6 +53,15 @@ export function fetchPortfolio () {
     return getPorfolio()
       .then(portfolio => {
         dispatch((setPortfolio(portfolio)))
+        portfolio.forEach(pos => { // for each entry in portfolio do an external api call to get Global Quote information for quote state
+          // eslint-disable-next-line promise/no-nesting
+          getAVApiQuote(pos.ticker)
+            .then(res => {
+              dispatch(setQuote(res['Global Quote']))
+              return null
+            })
+            .catch(err => console.log(err))
+        })
         return null
       })
   }
@@ -63,6 +72,13 @@ export function addNewPosition (position) {
     return addPosition(position)
       .then(response => {
         dispatch(createPosition(position))
+        // eslint-disable-next-line promise/no-nesting
+        getAVApiQuote(position.ticker)
+          .then(res => {
+            dispatch(setQuote(res['Global Quote']))
+            return null
+          })
+          .catch(err => console.log(err))
         return null
       })
   }
@@ -94,7 +110,6 @@ export function fetchAVQuote (ticker) {
   return dispatch => {
     getAVApiQuote(ticker)
       .then(quote => {
-        console.log(quote)
         dispatch(setQuote(ticker))
         return null
       })
