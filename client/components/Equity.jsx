@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react'
-
+import { connect } from 'react-redux'
+ 
 import { getAVApiFinancials } from '../api'
+import { fetchAVFinancials } from '../actions/index'
 
-export default function Equity ({ setEquity, ticker, equity }) {
+function Equity ({ setEquity, ticker, equity, dispatch, financials }) {
+  // useEffect(() => {
+  //   getAVApiFinancials(setEquity, ticker)
+  // }, [ticker])// when ticker changes from search button click in nav, re-render the page with a new api call
+
   useEffect(() => {
-    getAVApiFinancials(setEquity, ticker)
-  }, [ticker])// when ticker changes from search button click in nav, re-render the page with a new api call
+    dispatch(getAVApiFinancials(ticker)) // this hansn't been checked
+  }, [])
 
   const numberWithCommas = (num) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -53,3 +59,11 @@ export default function Equity ({ setEquity, ticker, equity }) {
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    financials: state.financials
+  }
+}
+
+export default connect(mapStateToProps)(Equity)

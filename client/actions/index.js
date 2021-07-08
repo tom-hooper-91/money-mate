@@ -1,4 +1,4 @@
-import { getPorfolio, addPosition, editPosition, deletePosition, getAVApiQuote } from '../api'
+import { getPorfolio, addPosition, editPosition, deletePosition, getAVApiQuote, getAVApiFinancials } from '../api'
 
 export const SET_PORTFOLIO = 'SET_PORTFOLIO'
 export const ADD_POSITION = 'ADD_POSITION'
@@ -6,6 +6,8 @@ export const EDIT_POSITION = 'EDIT_POSITION'
 export const DELETE_POSITION = 'DELETE_POSITION'
 
 export const GET_AVQUOTE = 'GET_AVQUOTE'
+
+export const GET_AVFINANCIALS = 'GET_AVFINANCIALS'
 
 // -----PORTFOLIO ACTION CREATORS -----
 
@@ -43,6 +45,13 @@ export function setQuote (quote) {
   return {
     type: GET_AVQUOTE,
     quote
+  }
+}
+
+export function setFinancials (financials) {
+  return {
+    type: GET_AVFINANCIALS,
+    financials
   }
 }
 
@@ -110,7 +119,18 @@ export function fetchAVQuote (ticker) {
   return dispatch => {
     getAVApiQuote(ticker)
       .then(quote => {
-        dispatch(setQuote(ticker))
+        dispatch(setQuote(quote)) // was ticker ---- currently not in use
+        return null
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+export function fetchAVFinancials (ticker) {
+  return dispatch => {
+    getAVApiFinancials(ticker)
+      .then(fin => {
+        dispatch(setFinancials(fin))
         return null
       })
       .catch(err => console.log(err))

@@ -24,7 +24,7 @@ function App ({ dispatch }) {
   return (
     <div className='app'>
       <Route path='/'><Nav setTicker={setTicker} /></Route>
-      <div className='container round-edge'>
+      <div className='container round-edge mb-5'>
         <Route path='/' component={Header} />
         <Route exact path='/' component={Home} />
         <Route exact path='/portfolio' component={Portfolio} />
