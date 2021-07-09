@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 
-import { editPosition, getPorfolio, deletePosition } from '../api'
+import { fetchPortfolio, editOnePosition, deleteOnePosition } from '../actions'
 
-export default function EditEntry () {
+function EditEntry ({ dispatch, portfolio }) {
   const [formData, setFormData] = useState({
     id: 0,
     name: '',
     ticker: '',
     buy_price: 0
   })
-  const [portfolio, setPortfolio] = useState([])
 
   useEffect(() => {
-    getPorfolio(setPortfolio)
+    dispatch(fetchPortfolio())
   }, [])
 
   const handleChange = (event) => {
@@ -21,8 +21,13 @@ export default function EditEntry () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    editPosition(formData, setFormData)
-    getPorfolio(setPortfolio)
+    dispatch(editOnePosition(formData))
+    setFormData({
+      id: 0,
+      name: '',
+      ticker: '',
+      buy_price: 0
+    })
   }
 
   const handleSelect = (id) => {
@@ -31,8 +36,7 @@ export default function EditEntry () {
 
   const handleDelete = (event, id) => {
     event.preventDefault()
-    deletePosition({ id })
-    getPorfolio(setPortfolio)
+    dispatch(deleteOnePosition({ id }))
   }
 
   return (
@@ -78,3 +82,12 @@ export default function EditEntry () {
     </>
   )
 }
+
+const mapStateToProps = (globalState) => {
+  return {
+    portfolio: globalState.portfolio,
+    quote: globalState.quote
+  }
+}
+
+export default connect(mapStateToProps)(EditEntry)

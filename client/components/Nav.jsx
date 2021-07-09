@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default function Nav ({ setTicker }) {
+import { fetchAVFinancials } from '../actions/index'
+
+function Nav ({ dispatch, history }) {
   const [search, setSearch] = useState('') // state for search bar
   const handleChange = (event) => {
     setSearch(event.target.value)
@@ -9,8 +11,9 @@ export default function Nav ({ setTicker }) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setTicker(search)
-  }// Submit and set ticker to result of search bar text which is used for re rendering equity
+    dispatch(fetchAVFinancials(search))
+    history.push(`/equity/${search}`)
+  }// THUNK which triggers api call and updates financials state info in store
 
   return (
     <nav className="navbar navbar-expand-sm navbar-dark dark-background mb-5">
@@ -22,21 +25,29 @@ export default function Nav ({ setTicker }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to='/' className="nav-link active" aria-current="page">Home</Link>
+              <span className="nav-link active" aria-current="page" onClick={() => history.push('/')}>
+                Home
+              </span>
             </li>
             <li className="nav-item">
-              <Link to='/portfolio' className='nav-link'>Portfolio</Link>
+              <span className="nav-link" onClick={() => history.push('/portfolio')}>
+                Portfolio
+              </span>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Options
+            Portfolio Options
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <Link to='/portfolio/add' className='dropdown-item'>Add Position</Link>
+                  <span className='dropdown-item' onClick={() => history.push('/portfolio/add')}>
+                    Add Position
+                  </span>
                 </li>
                 <li>
-                  <Link to='/portfolio/edit' className='dropdown-item'>Edit Position</Link>
+                  <span className='dropdown-item' onClick={() => history.push('/portfolio/edit')}>
+                    Edit Position
+                  </span>
                 </li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><a className="dropdown-item" href="#">Something else here</a></li>
@@ -48,10 +59,12 @@ export default function Nav ({ setTicker }) {
           </ul>
           <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
-            <button className="btn btn-outline-success" type="submit"><Link to={`/equity/${search}`}>Search</Link></button>
+            <button className="btn btn-outline-success" type="submit"></button>
           </form>
         </div>
       </div>
     </nav>
   )
 }
+
+export default connect()(Nav)
