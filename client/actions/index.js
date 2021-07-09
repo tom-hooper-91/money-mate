@@ -119,7 +119,7 @@ export function fetchAVQuote (ticker) {
   return dispatch => {
     getAVApiQuote(ticker)
       .then(quote => {
-        dispatch(setQuote(quote)) // was ticker ---- currently not in use
+        dispatch(setQuote(quote)) // was ticker ---- currently not in use?
         return null
       })
       .catch(err => console.log(err))

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default function Nav ({ setTicker }) {
+import { fetchAVFinancials } from '../actions/index'
+
+function Nav ({ dispatch, history }) {
   const [search, setSearch] = useState('') // state for search bar
   const handleChange = (event) => {
     setSearch(event.target.value)
@@ -9,8 +12,9 @@ export default function Nav ({ setTicker }) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setTicker(search)
-  }// Submit and set ticker to result of search bar text which is used for re rendering equity
+    dispatch(fetchAVFinancials(search))
+    history.push(`/equity/${search}`)
+  }// THUNK which triggers api call and updates financials state info in store
 
   return (
     <nav className="navbar navbar-expand-sm navbar-dark dark-background mb-5">
@@ -48,10 +52,12 @@ export default function Nav ({ setTicker }) {
           </ul>
           <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
-            <button className="btn btn-outline-success" type="submit"><Link to={`/equity/${search}`}>Search</Link></button>
+            <button className="btn btn-outline-success" type="submit"></button>
           </form>
         </div>
       </div>
     </nav>
   )
 }
+
+export default connect()(Nav)

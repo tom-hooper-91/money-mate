@@ -65,12 +65,14 @@ export function getAVApiQuote (ticker) {
   return request
     .get(avApiURL)
     .then(response => {
+      console.log('response in get quote api call is ----', response)
       return response.body
     })
     .catch(err => console.log(err))
 }
 
 export function getAVApiFinancials (ticker) {
+  console.log('ticker in api call is', ticker)
   const avApiURL = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${key}`
 
   return request

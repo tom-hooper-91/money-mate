@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -16,21 +16,18 @@ import Equity from './Equity'
 function App ({ dispatch }) {
   useEffect(() => {
     dispatch(fetchPortfolio())
-  }, [])
-
-  const [ticker, setTicker] = useState('')
-  const [equity, setEquity] = useState({})
+  }, [])// THUNK that fetches portfolio from database and triggers api calls for each entry
 
   return (
     <div className='app'>
-      <Route path='/'><Nav setTicker={setTicker} /></Route>
+      <Route path='/' component={Nav}/>
       <div className='container round-edge mb-5'>
         <Route path='/' component={Header} />
         <Route exact path='/' component={Home} />
         <Route exact path='/portfolio' component={Portfolio} />
         <Route exact path='/portfolio/add' component={AddEntry} />
         <Route exact path='/portfolio/edit' component={EditEntry} />
-        <Route exact path='/equity/:ticker'><Equity ticker={ticker} equity={equity} setEquity={setEquity} /></Route>
+        <Route exact path='/equity/:ticker' component={Equity}/>
       </div>
       <Route path='/' component={Footer} />
     </div>
