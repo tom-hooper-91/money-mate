@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { fetchAVFinancials } from '../actions/index'
@@ -26,21 +25,29 @@ function Nav ({ dispatch, history }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to='/' className="nav-link active" aria-current="page">Home</Link>
+              <span className="nav-link active" aria-current="page" onClick={() => history.push('/')}>
+                Home
+              </span>
             </li>
             <li className="nav-item">
-              <Link to='/portfolio' className='nav-link'>Portfolio</Link>
+              <span className="nav-link" onClick={() => history.push('/portfolio')}>
+                Portfolio
+              </span>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Options
+            Portfolio Options
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <Link to='/portfolio/add' className='dropdown-item'>Add Position</Link>
+                  <span className='dropdown-item' onClick={() => history.push('/portfolio/add')}>
+                    Add Position
+                  </span>
                 </li>
                 <li>
-                  <Link to='/portfolio/edit' className='dropdown-item'>Edit Position</Link>
+                  <span className='dropdown-item' onClick={() => history.push('/portfolio/edit')}>
+                    Edit Position
+                  </span>
                 </li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><a className="dropdown-item" href="#">Something else here</a></li>

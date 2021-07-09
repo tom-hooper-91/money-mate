@@ -65,7 +65,6 @@ export function getAVApiQuote (ticker) {
   return request
     .get(avApiURL)
     .then(response => {
-      console.log('response in get quote api call is ----', response)
       return response.body
     })
     .catch(err => console.log(err))

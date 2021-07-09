@@ -47,5 +47,8 @@ table, th, td {
 .loser {
   color: red;
 }
+.nav-item {
+  cursor: pointer;
+}
 
 
