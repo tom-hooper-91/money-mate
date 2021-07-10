@@ -14,7 +14,7 @@ function Equity ({ financials }) {
             <h2 className='text-center'>{financials.Name}</h2>
             <p>{financials.Description}</p>
             <div className='d-flex justify-content-center'>
-              <table className='financials-table'>
+              <table className='financials-table mb-3'>
                 <thead>
                   <tr>
                     <th>Field</th>
@@ -27,11 +27,11 @@ function Equity ({ financials }) {
                     <td>${numberWithCommas(financials.MarketCapitalization)}</td>
                   </tr>
                   <tr>
-                    <th>PE </th>
+                    <th>P/E </th>
                     <td>{financials.PERatio}</td>
                   </tr>
                   <tr>
-                    <th>PB </th>
+                    <th>P/B </th>
                     <td>{financials.PriceToBookRatio}</td>
                   </tr>
                   <tr>
