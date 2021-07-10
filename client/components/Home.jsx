@@ -1,15 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-export default function Home () {
+import News from './News'
+
+import { fetchNews } from '../actions/index'
+
+function Home ({ dispatch, news }) {
+  useEffect(() => {
+    dispatch(fetchNews())
+  }, [])
+
   return (
-    <div className="row">
-      <div className="col-lg-12 text-center">
-        <h1 className='fw-lighter'>Welcome to Money-Mate</h1>
-        <p>This is an app where you can track and update your investment portfolio and in the future get news updates, youtube videos, 13F reports and more ...</p>
-        <hr />
-        {/* <img src='' alt='laptop and smartphone with stock market charts' className='img-fluid text-center round-edge'/> */}
-        <iframe src='https://gfycat.com/ifr/BelovedEntireAmoeba' frameBorder='0' scrolling='no' allowFullScreen width='640' height='412'></iframe><p> <a href="https://gfycat.com/belovedentireamoeba-rocket-league"></a></p>
+    <>
+      <div className="row justify-content-center">
+        <div className="col-lg-4 text-center align-center">
+          <h1 className='fw-lighter'>Welcome to Money-Mate</h1>
+          <p>This is an app where you can track and update your US investment portfolio, get up to date financial data and news</p>
+          <hr />
+        </div>
       </div>
-    </div>
+      <div className="row d-flex justify-content-center">
+        {news.articles
+          ? news.articles.map((article, key) => {
+            return <News key={key} article={article}/>
+          })
+          : <h4>News feed loading...</h4>
+        }
+      </div>
+    </>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    news: state.news
+  }
+}
+
+export default connect(mapStateToProps)(Home)

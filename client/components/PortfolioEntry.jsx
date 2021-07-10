@@ -23,7 +23,7 @@ function PortfolioEntry ({ entry, quote }) {
 
   return (
     <>
-      <div className="col-lg-3 dark-background round-edge text-center border m-3 shadow">
+      <div className="col-lg-3 dark-background rounded text-center border m-3 shadow">
         {entry.name
           ? <>
             <hr />
@@ -46,6 +46,7 @@ function PortfolioEntry ({ entry, quote }) {
               : ' Unavailable'
             }
             </p>
+            <hr />
           </>
           : <h4>Loading....</h4>
         }
