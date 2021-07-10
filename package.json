@@ -41,6 +41,8 @@
     "express": "^4.17.1",
     "knex": "^0.95.6",
     "pg": "^8.6.0",
+    "react-twitter-embed": "^3.0.3",
+    "react-twitter-widgets": "^1.10.0",
     "superagent": "^5.2.2"
   },
   "devDependencies": {

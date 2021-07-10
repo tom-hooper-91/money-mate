@@ -1,4 +1,4 @@
-import { getPorfolio, addPosition, editPosition, deletePosition, getAVApiQuote, getAVApiFinancials } from '../api'
+import { getPorfolio, addPosition, editPosition, deletePosition, getAVApiQuote, getAVApiFinancials, getNewsArticles } from '../api'
 
 export const SET_PORTFOLIO = 'SET_PORTFOLIO'
 export const ADD_POSITION = 'ADD_POSITION'
@@ -8,6 +8,8 @@ export const DELETE_POSITION = 'DELETE_POSITION'
 export const GET_AVQUOTE = 'GET_AVQUOTE'
 
 export const GET_AVFINANCIALS = 'GET_AVFINANCIALS'
+
+export const GET_NEWS = 'GET_NEWS'
 
 // -----PORTFOLIO ACTION CREATORS -----
 
@@ -52,6 +54,15 @@ export function setFinancials (financials) {
   return {
     type: GET_AVFINANCIALS,
     financials
+  }
+}
+
+// ----- NEWS ACTION CREATORS ------
+
+export function setNews (news) {
+  return {
+    type: GET_NEWS,
+    news
   }
 }
 
@@ -131,6 +142,17 @@ export function fetchAVFinancials (ticker) {
     getAVApiFinancials(ticker)
       .then(fin => {
         dispatch(setFinancials(fin))
+        return null
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+export function fetchNews () {
+  return dispatch => {
+    getNewsArticles()
+      .then(news => {
+        dispatch(setNews(news))
         return null
       })
       .catch(err => console.log(err))
