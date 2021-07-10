@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { addNewPosition } from '../actions/index'
 
-function AddEntry ({ dispatch }) {
+function AddEntry ({ dispatch, history }) {
   const [formData, setFormData] = useState({
     name: '',
     ticker: '',
@@ -24,6 +24,7 @@ function AddEntry ({ dispatch }) {
       buy_price: 0,
       number_shares: 0
     })
+    history.push('/')
   }
 
   return (
