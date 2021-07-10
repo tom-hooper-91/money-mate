@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
-import { addPosition } from '../api'
+import { addNewPosition } from '../actions/index'
 
-export default function AddEntry () {
+function AddEntry ({ dispatch, history }) {
   const [formData, setFormData] = useState({
     name: '',
     ticker: '',
@@ -16,7 +17,14 @@ export default function AddEntry () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    addPosition(formData, setFormData)
+    dispatch(addNewPosition(formData))
+    setFormData({
+      name: '',
+      ticker: '',
+      buy_price: 0,
+      number_shares: 0
+    })
+    history.push('/')
   }
 
   return (
@@ -51,3 +59,5 @@ export default function AddEntry () {
     </form>
   )
 }
+
+export default connect()(AddEntry)

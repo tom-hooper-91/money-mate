@@ -4,44 +4,33 @@ const serverURL = 'http://localhost:3000/'
 
 const key = '03DDZXXS6TMIXSJ5'
 
-// internal API functions
+// ---- internal API functions using Redux ----
 
-export function getPorfolio (setPortfolio) {
+export function getPorfolio () {
   return request
     .get(`${serverURL}portfolio/`)
     .then(response => {
-      setPortfolio(response.body)
-      return null
+      return response.body
     })
     .catch(err => console.log(err))
 }
 
-export function addPosition (position, setFormData) {
+export function addPosition (position) {
   return request
     .post(`${serverURL}portfolio/add`)
     .send(position)
     .then(response => {
-      setFormData({
-        name: '',
-        ticker: '',
-        buy_price: 0
-      })
-      return null
+      return response.body
     })
     .catch(err => console.log(err))
 }
 
-export function editPosition (position, setFormData) {
+export function editPosition (position) {
   return request
     .patch(`${serverURL}portfolio/edit`)
     .send(position)
-    .then(() => {
-      setFormData({
-        name: '',
-        ticker: '',
-        buy_price: 0
-      })
-      return null
+    .then(response => {
+      return response.body
     })
     .catch(err => console.log(err))
 }
@@ -50,10 +39,13 @@ export function deletePosition (id) {
   return request
     .delete(`${serverURL}portfolio/edit`)
     .send(id)
-    .then(() => null)
+    .then(response => {
+      return response.body
+    })
     .catch(err => console.log(err))
 }
-// external Alpha Vantage API Functions
+
+// ---- external Alpha Vantage API Functions ----
 
 export function getAVApiDaily (setAVData, ticker) {
   const avApiURL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&interval=5min&apikey=${key}`
@@ -67,26 +59,24 @@ export function getAVApiDaily (setAVData, ticker) {
     .catch(err => console.log(err))
 }
 
-export function getAVApiQuote (setAVData, ticker) {
+export function getAVApiQuote (ticker) {
   const avApiURL = `https:www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`
 
   return request
     .get(avApiURL)
     .then(response => {
-      setAVData(response.body['Global Quote'])
-      return null
+      return response.body
     })
     .catch(err => console.log(err))
 }
 
-export function getAVApiFinancials (setEquity, ticker) {
+export function getAVApiFinancials (ticker) {
   const avApiURL = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${key}`
 
   return request
     .get(avApiURL)
     .then(response => {
-      setEquity(response.body)
-      return null
+      return response.body
     })
     .catch(err => console.log(err))
 }

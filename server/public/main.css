@@ -44,8 +44,11 @@ table, th, td {
 .gainer {
   color: green;
 }
-.looser {
+.loser {
   color: red;
+}
+.nav-item {
+  cursor: pointer;
 }
 
 
