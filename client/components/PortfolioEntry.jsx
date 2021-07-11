@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
-function PortfolioEntry ({ entry, quote }) {
+import { fetchAVFinancials } from '../actions/index'
+
+function PortfolioEntry ({ entry, quote, history, dispatch }) {
   const [results, setResults] = useState([])
 
   const checkForNull = (quote) => {
@@ -21,9 +23,14 @@ function PortfolioEntry ({ entry, quote }) {
     }
   }
 
+  const handeClick = () => {
+    dispatch(fetchAVFinancials(entry.ticker))
+    history.push(`/equity/${entry.ticker}`)
+  }
+
   return (
     <>
-      <div className="col-lg-3 dark-background rounded text-center border m-3 shadow">
+      <div className="col-lg-3 tile rounded text-center border m-3 shadow" onClick={() => handeClick()}>
         {entry.name
           ? <>
             <hr />

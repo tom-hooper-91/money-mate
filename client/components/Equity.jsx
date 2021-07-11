@@ -7,12 +7,11 @@ function Equity ({ financials }) {
   }
 
   return (
-    <div className="row">
-      <div className="col-lg-12">
+    <div className="row justify-content-center">
+      <div className="col-lg-4">
         {financials.Name
           ? <>
             <h2 className='text-center'>{financials.Name}</h2>
-            <p>{financials.Description}</p>
             <div className='d-flex justify-content-center'>
               <table className='financials-table mb-3'>
                 <thead>
@@ -41,6 +40,7 @@ function Equity ({ financials }) {
                 </tbody>
               </table>
             </div>
+            <p>{financials.Description}</p>
           </>
           : <h4>Loading...Cannot find matching ticker</h4>
         }

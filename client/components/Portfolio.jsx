@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PortfolioEntry from './PortfolioEntry'
 
-function Portfolio ({ portfolio }) {
+function Portfolio ({ portfolio, history }) {
   return (
     <>
       <div className="row justify-content-center">
@@ -15,7 +15,7 @@ function Portfolio ({ portfolio }) {
         <hr />
         {portfolio.map(entry => {
           return (
-            <PortfolioEntry key ={entry.id} entry={entry}/>
+            <PortfolioEntry key ={entry.id} entry={entry} history={history}/>
           )
         })}
         <hr />
