@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function News ({ article }) {
   return (
-    <div className='col-lg-7 dark-background rounded text-center mb-4 '>
+    <div className='col-lg-3 m-2 dark-background rounded text-center shadow'>
       <h3 className='pt-2'><a href={article.url}>{article.title}</a></h3>
       <hr />
       <p>{article.description}</p>

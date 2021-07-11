@@ -16,7 +16,7 @@ function Nav ({ dispatch, history }) {
   }// THUNK which triggers api call and updates financials state info in store
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark dark-background mb-5">
+    <nav className="navbar navbar-expand-sm navbar-dark mb-5">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">M-M</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
