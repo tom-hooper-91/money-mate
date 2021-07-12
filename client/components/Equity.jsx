@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 function Equity ({ financials }) {
   const numberWithCommas = (num) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')// use toLocaleString
   }
 
   return (
