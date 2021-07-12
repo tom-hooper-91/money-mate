@@ -49,8 +49,10 @@ function EditEntry ({ dispatch, portfolio }) {
         portfolio.map((entry, key) => {
           return (
             <div className="col-lg-3 tile m-2 text-center rounded" key={key}>
+              <hr />
               <h4>{entry.name}</h4>
               <button onClick={() => handleSelect(entry.id)} className='btn btn-outline-success'>Edit</button> <button onClick={(event) => handleDelete(event, entry.id)} className='btn btn-outline-danger'>Delete</button>
+              <hr />
 
               {formData.id === entry.id &&
             <form onSubmit={event => handleSubmit(event)}>
@@ -74,13 +76,19 @@ function EditEntry ({ dispatch, portfolio }) {
                 <input name="number_shares" type="number" className="form-control" id="number_shares" value={formData.number_shares}
                   onChange={(event) => handleChange(event)}/>
               </div>
-              <button type="submit" className="btn btn-outline-primary">Update</button>
+              <button type="submit" className="btn btn-outline-light">Update</button>
+              <hr />
             </form>
               }
             </div>
           )
         })
         }
+      </div>
+      <div className="row">
+        <div className="col-lg-12">
+          <hr />
+        </div>
       </div>
     </>
   )

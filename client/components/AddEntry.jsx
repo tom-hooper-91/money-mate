@@ -34,6 +34,7 @@ function AddEntry ({ dispatch, history }) {
           <form onSubmit={event => {
             handleSubmit(event)
           }}>
+            <hr />
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Company Name: </label>
               <input name="name" type="text" className="form-control" id="name" value={formData.name}
@@ -54,8 +55,14 @@ function AddEntry ({ dispatch, history }) {
               <input name="number_shares" type="number" className="form-control" id="number_shares" value={formData.number_shares}
                 onChange={(event) => handleChange(event)}/>
             </div>
-            <button type="submit" className="btn btn-outline-primary">Submit</button>
+            <button type="submit" className="btn btn-outline-light">Submit</button>
+            <hr />
           </form>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-12">
+          <hr />
         </div>
       </div>
     </>

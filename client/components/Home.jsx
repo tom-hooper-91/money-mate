@@ -26,6 +26,9 @@ function Home ({ dispatch, news }) {
           })
           : <h4>News feed loading...</h4>
         }
+        <div className="col-lg-12">
+          <hr />
+        </div>
       </div>
     </>
   )
