@@ -59,7 +59,7 @@ function Nav ({ dispatch, history }) {
           </ul>
           <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
-            <button className="btn btn-outline-success" type="submit">Search</button>
+            <button className="btn btn-outline-primary" type="submit">Search</button>
           </form>
         </div>
       </div>
