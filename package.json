@@ -13,7 +13,7 @@
     "dev:server": "nodemon server",
     "webpack": "webpack --config ./client/webpack.config.js",
     "start": "run-s build server",
-    "build": "npm run webpack",
+    "build": "npm run webpack && npm run knex migrate:latest",
     "server": "node server",
     "test": "jest",
     "test:coverage": "jest --noStackTrace --coverage && jest-coverage-badges",
