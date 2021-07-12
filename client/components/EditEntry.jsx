@@ -76,7 +76,7 @@ function EditEntry ({ dispatch, portfolio }) {
                 <input name="number_shares" type="number" className="form-control" id="number_shares" value={formData.number_shares}
                   onChange={(event) => handleChange(event)}/>
               </div>
-              <button type="submit" className="btn btn-outline-dark">Update</button>
+              <button type="submit" className="btn btn-outline-light">Update</button>
               <hr />
             </form>
               }

@@ -16,7 +16,7 @@ function Nav ({ dispatch, history }) {
   }// THUNK which triggers api call and updates financials state info in store
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-light mb-5 tile shadow">
+    <nav className="navbar navbar-expand-sm navbar-dark mb-5 tile shadow">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">M-M</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,7 @@ function Nav ({ dispatch, history }) {
           </ul>
           <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
-            <button className="btn btn-outline-dark" type="submit">Search</button>
+            <button className="btn btn-outline-light" type="submit">Search</button>
           </form>
         </div>
       </div>

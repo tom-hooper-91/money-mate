@@ -55,7 +55,7 @@ function AddEntry ({ dispatch, history }) {
               <input name="number_shares" type="number" className="form-control" id="number_shares" value={formData.number_shares}
                 onChange={(event) => handleChange(event)}/>
             </div>
-            <button type="submit" className="btn btn-outline-dark">Submit</button>
+            <button type="submit" className="btn btn-outline-light">Submit</button>
             <hr />
           </form>
         </div>
