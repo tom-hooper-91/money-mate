@@ -15,7 +15,9 @@
     "start": "run-s build server",
     "build": "npm run webpack",
     "server": "node server",
-    "test": "jest --watchAll",
+    "test": "jest",
+    "test:coverage": "jest --noStackTrace --coverage && jest-coverage-badges",
+    "test:watch": "jest --noStackTrace --watchAll --verbose",
     "lint": "eslint --ext .js,.jsx .",
     "knex": "knex --knexfile server/db/knexfile.js"
   },
@@ -41,6 +43,8 @@
     "express": "^4.17.1",
     "knex": "^0.95.6",
     "pg": "^8.6.0",
+    "react-twitter-embed": "^3.0.3",
+    "react-twitter-widgets": "^1.10.0",
     "superagent": "^5.2.2"
   },
   "devDependencies": {

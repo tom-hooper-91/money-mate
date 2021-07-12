@@ -4,6 +4,8 @@ const serverURL = 'http://localhost:3000/'
 
 const key = '03DDZXXS6TMIXSJ5'
 
+const newsKey = 'ac29533dd8cc441e9dc57669f0590d00'
+
 // ---- internal API functions using Redux ----
 
 export function getPorfolio () {
@@ -75,6 +77,19 @@ export function getAVApiFinancials (ticker) {
 
   return request
     .get(avApiURL)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
+}
+
+// ------ NEWS THUNK ------
+
+export function getNewsArticles () {
+  const newsURL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${newsKey}`
+
+  return request
+    .get(newsURL)
     .then(response => {
       return response.body
     })
