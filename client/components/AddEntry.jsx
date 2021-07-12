@@ -41,7 +41,7 @@ function AddEntry ({ dispatch, history }) {
             </div>
             <div className="mb-3">
               <label htmlFor="ticker" className="form-label">Ticker: </label>
-              <input type="password" className="form-control" id="ticker" value={formData.ticker}
+              <input type="text" className="form-control" id="ticker" value={formData.ticker}
                 onChange={(event) => handleChange(event)}/>
             </div>
             <div className="mb-3">
