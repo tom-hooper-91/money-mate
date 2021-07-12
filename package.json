@@ -13,13 +13,15 @@
     "dev:server": "nodemon server",
     "webpack": "webpack --config ./client/webpack.config.js",
     "start": "build && server",
-    "build": "webpack && knex migrate:latest",
+    "build": "run-p build:client build:server",
+    "build:client": "npm run webpack -- --mode production",
+    "build:server": "npm run knex -- migrate:latest",
     "server": "node server",
     "test": "jest",
     "test:coverage": "jest --noStackTrace --coverage && jest-coverage-badges",
     "test:watch": "jest --noStackTrace --watchAll --verbose",
     "lint": "eslint --ext .js,.jsx .",
-    "knex": "knex --knexfile server/db/knexfile.js"
+    "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "babel": {
     "presets": [
