@@ -2,6 +2,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #fff;
   background-image: url('images/cool-background.png');
+  background-attachment: fixed;
 }
 a, a:hover, a:visited, a:active {
   color: inherit;
