@@ -1,11 +1,97 @@
 import request from 'superagent'
 
-const serverURL = 'http://localhost:3000/api/v1'
+const serverURL = 'http://localhost:3000/'
 
-// *** EXAMPLE ***
-export function getWelcome () {
+const key = '03DDZXXS6TMIXSJ5'
+
+const newsKey = 'ac29533dd8cc441e9dc57669f0590d00'
+
+// ---- internal API functions using Redux ----
+
+export function getPorfolio () {
   return request
-    .get(`${serverURL}/welcome`)
-    .then(response => response.body)
+    .get(`${serverURL}portfolio/`)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
 }
-// ***   ***   ***
+
+export function addPosition (position) {
+  return request
+    .post(`${serverURL}portfolio/add`)
+    .send(position)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
+}
+
+export function editPosition (position) {
+  return request
+    .patch(`${serverURL}portfolio/edit`)
+    .send(position)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
+}
+
+export function deletePosition (id) {
+  return request
+    .delete(`${serverURL}portfolio/edit`)
+    .send(id)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
+}
+
+// ---- external Alpha Vantage API Functions ----
+
+export function getAVApiDaily (setAVData, ticker) {
+  const avApiURL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&interval=5min&apikey=${key}`
+
+  return request
+    .get(avApiURL)
+    .then(response => {
+      setAVData(response.body)
+      return null
+    })
+    .catch(err => console.log(err))
+}
+
+export function getAVApiQuote (ticker) {
+  const avApiURL = `https:www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`
+
+  return request
+    .get(avApiURL)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
+}
+
+export function getAVApiFinancials (ticker) {
+  const avApiURL = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${key}`
+
+  return request
+    .get(avApiURL)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
+}
+
+// ------ NEWS THUNK ------
+
+export function getNewsArticles () {
+  const newsURL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${newsKey}`
+
+  return request
+    .get(newsURL)
+    .then(response => {
+      return response.body
+    })
+    .catch(err => console.log(err))
+}

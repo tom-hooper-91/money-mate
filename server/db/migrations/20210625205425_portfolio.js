@@ -4,6 +4,7 @@ exports.up = function (knex) {
     table.string('name')
     table.string('ticker')
     table.integer('buy_price')
+    table.integer('number_shares')
   })
 }
 
