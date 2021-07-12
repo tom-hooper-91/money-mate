@@ -8,7 +8,7 @@ function Equity ({ financials }) {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-lg-4 tile">
+      <div className="col-lg-4 tile rounded shadow">
         {financials.Name
           ? <>
             <hr />

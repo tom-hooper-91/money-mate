@@ -21,7 +21,7 @@ function App ({ dispatch }) {
   return (
     <div className='app'>
       <Route path='/' component={Nav}/>
-      <div className='container rounded mb-5'>
+      <div className='container rounded mb-5 shadow'>
         <Route path='/' component={Header} />
         <Route exact path='/' component={Home} />
         <Route exact path='/portfolio' component={Portfolio} />
