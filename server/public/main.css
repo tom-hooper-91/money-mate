@@ -9,15 +9,18 @@ a, a:hover, a:visited, a:active {
   text-decoration: none;
  }
 .tile {
-  background-color: #100c08;;
+  background-color: #100c08;
+}
+.tile-link {
+  background-color: #100c08;
+  cursor: pointer;
 }
 .container {
   background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(4px);
 }
-.tile:hover {
+.tile:hover, .tile-link:hover {
   background-color: #343a40;
-  cursor: pointer;
 }
 .round-edge {
   border-radius: 2px !important;

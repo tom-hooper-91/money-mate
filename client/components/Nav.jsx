@@ -50,11 +50,11 @@ function Nav ({ dispatch, history }) {
                   </span>
                 </li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                <li><a className="dropdown-item" href="#">Coming Soon...</a></li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Future Content</a>
+              <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Coming Soon...</a>
             </li>
           </ul>
           <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>

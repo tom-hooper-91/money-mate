@@ -30,7 +30,7 @@ function PortfolioEntry ({ entry, quote, history, dispatch }) {
 
   return (
     <>
-      <div className="col-lg-3 tile rounded text-center border m-3 shadow" onClick={() => handeClick()}>
+      <div className="col-lg-3 tile-link rounded text-center border m-3 shadow" onClick={() => handeClick()}>
         {entry.name
           ? <>
             <hr />
