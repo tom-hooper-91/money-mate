@@ -15,7 +15,7 @@ beforeEach(() => {
 test('getPortfolio gets all positions', () => {
   return db.getPortfolio(testDb)
     .then(portfolio => {
-      expect(portfolio).toHaveLength(2)
+      expect(portfolio).toHaveLength(3)
       return null
     })
 })
@@ -28,7 +28,7 @@ test('addPosition adds a position', () => {
   }
   return db.addPosition(testPosition, testDb)
     .then(actual => {
-      return expect(actual[0]).toEqual(3)
+      return expect(actual[0]).toEqual(4)
     })
 })
 

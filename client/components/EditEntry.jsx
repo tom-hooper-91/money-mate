@@ -8,7 +8,8 @@ function EditEntry ({ dispatch, portfolio }) {
     id: 0,
     name: '',
     ticker: '',
-    buy_price: 0
+    buy_price: 0,
+    number_shares: 0
   })
 
   useEffect(() => {
@@ -16,6 +17,7 @@ function EditEntry ({ dispatch, portfolio }) {
   }, [])
 
   const handleChange = (event) => {
+    event.preventDefault()
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
@@ -26,7 +28,8 @@ function EditEntry ({ dispatch, portfolio }) {
       id: 0,
       name: '',
       ticker: '',
-      buy_price: 0
+      buy_price: 0,
+      number_shares: 0
     })
   }
 
@@ -41,44 +44,52 @@ function EditEntry ({ dispatch, portfolio }) {
 
   return (
     <>
-      <ul>
+      <div className="row justify-content-center">
         {portfolio.length &&
-        portfolio.map(entry => {
-          return <li key={entry.id}>{entry.name} <button onClick={() => handleSelect(entry.id)}>Edit</button><button onClick={(event) => handleDelete(event, entry.id)}>Delete</button></li>
+        portfolio.map((entry, key) => {
+          return (
+            <div className="col-lg-3 tile m-2 text-center rounded shadow" key={key}>
+              <hr />
+              <h4>{entry.name}</h4>
+              <button onClick={() => handleSelect(entry.id)} className='btn btn-outline-primary'>Edit</button> <button onClick={(event) => handleDelete(event, entry.id)} className='btn btn-outline-danger'>Delete</button>
+              <hr />
+
+              {formData.id === entry.id &&
+            <form onSubmit={event => handleSubmit(event)}>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">Company Name: </label>
+                <input name="name" type="text" className="form-control" id="name" value={formData.name}
+                  onChange={(event) => handleChange(event)}/>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="ticker" className="form-label">Ticker: </label>
+                <input name="ticker" type="text" className="form-control" id="ticker" value={formData.ticker}
+                  onChange={(event) => handleChange(event)}/>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="buy_price" className="form-label">Buy Price: </label>
+                <input name="buy_price" type="number" className="form-control" id="buy_price" value={formData.buy_price}
+                  onChange={(event) => handleChange(event)}/>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="number_shares" className="form-label">Number of Shares: </label>
+                <input name="number_shares" type="number" className="form-control" id="number_shares" value={formData.number_shares}
+                  onChange={(event) => handleChange(event)}/>
+              </div>
+              <button type="submit" className="btn btn-outline-light">Update</button>
+              <hr />
+            </form>
+              }
+            </div>
+          )
         })
         }
-      </ul>
-      {formData.id > 0 &&
-      <form onSubmit={event => {
-        handleSubmit(event)
-      }}>
-        <label htmlFor="name">Name: </label>
-        <input type="text"
-          name="name"
-          id="name"
-          value={formData.name}
-          onChange={(event) => handleChange(event)}/>
-        <label htmlFor="ticker">Ticker: </label>
-        <input type="text"
-          name="ticker"
-          id="ticker"
-          value={formData.ticker}
-          onChange={(event) => handleChange(event)}/>
-        <label htmlFor="buy_price">Buy Price $: </label>
-        <input type="number"
-          name="buy_price"
-          id="buy_price"
-          value={formData.buy_price}
-          onChange={(event) => handleChange(event)}/>
-        <label htmlFor="number_shares">Number of Shares Owned: </label>
-        <input type="number"
-          name="number_shares"
-          id="number_shares"
-          value={formData.number_shares}
-          onChange={(event) => handleChange(event)}/>
-        <button>Update Position</button>
-      </form>
-      }
+      </div>
+      <div className="row">
+        <div className="col-lg-12">
+          <hr />
+        </div>
+      </div>
     </>
   )
 }

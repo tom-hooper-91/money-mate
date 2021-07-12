@@ -14,7 +14,7 @@ function Home ({ dispatch, news }) {
     <>
       <div className="row justify-content-center">
         <div className="col-lg-4 text-center align-center">
-          <h1 className='fw-lighter'>Welcome to Money-Mate</h1>
+          <h1 className='fw-light'>Welcome to Money-Mate</h1>
           <p>A place where you can track and update your US investment portfolio, get up to date financial data and news.</p>
           <hr />
         </div>
@@ -26,6 +26,9 @@ function Home ({ dispatch, news }) {
           })
           : <h4>News feed loading...</h4>
         }
+        <div className="col-lg-12">
+          <hr />
+        </div>
       </div>
     </>
   )

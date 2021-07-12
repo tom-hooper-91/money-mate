@@ -16,7 +16,7 @@ function Nav ({ dispatch, history }) {
   }// THUNK which triggers api call and updates financials state info in store
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark dark-background mb-5">
+    <nav className="navbar navbar-expand-sm navbar-dark mb-5 tile shadow">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">M-M</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,16 +50,16 @@ function Nav ({ dispatch, history }) {
                   </span>
                 </li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                <li><a className="dropdown-item" href="#">Coming Soon...</a></li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Future Content</a>
+              <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Coming Soon...</a>
             </li>
           </ul>
           <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
             <input className="form-control me-2" type="search" placeholder="Enter Stock Ticker" aria-label="Search" onChange={(event) => handleChange(event)} value={search}/>
-            <button className="btn btn-outline-success" type="submit"></button>
+            <button className="btn btn-outline-light" type="submit">Search</button>
           </form>
         </div>
       </div>
