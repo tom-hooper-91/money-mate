@@ -4,7 +4,7 @@ exports.up = function (knex) {
     table.string('name')
     table.string('ticker')
     table.decimal('buy_price')
-    table.integer('number_shares')
+    table.decimal('number_shares')
   })
 }
 
