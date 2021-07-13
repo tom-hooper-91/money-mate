@@ -3,8 +3,8 @@ exports.up = function (knex) {
     table.increments('id').primary()
     table.string('name')
     table.string('ticker')
-    table.integer('buy_price')
-    table.integer('number_shares')
+    table.decimal('buy_price')
+    table.decimal('number_shares')
   })
 }
 

@@ -1,10 +1,6 @@
 import request from 'superagent'
 
-const serverURL = 'http://localhost:3000/'
-
-const key = '03DDZXXS6TMIXSJ5'
-
-const newsKey = 'ac29533dd8cc441e9dc57669f0590d00'
+const serverURL = '/'
 
 // ---- internal API functions using Redux ----
 
@@ -49,11 +45,9 @@ export function deletePosition (id) {
 
 // ---- external Alpha Vantage API Functions ----
 
-export function getAVApiDaily (setAVData, ticker) {
-  const avApiURL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&interval=5min&apikey=${key}`
-
+export function getAVApiDaily (setAVData, ticker) { // not in use
   return request
-    .get(avApiURL)
+    .get(`${serverURL}api/v1/daily/${ticker}`)
     .then(response => {
       setAVData(response.body)
       return null
@@ -62,10 +56,8 @@ export function getAVApiDaily (setAVData, ticker) {
 }
 
 export function getAVApiQuote (ticker) {
-  const avApiURL = `https:www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`
-
   return request
-    .get(avApiURL)
+    .get(`${serverURL}api/v1/quote/${ticker}`)
     .then(response => {
       return response.body
     })
@@ -73,10 +65,8 @@ export function getAVApiQuote (ticker) {
 }
 
 export function getAVApiFinancials (ticker) {
-  const avApiURL = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${key}`
-
   return request
-    .get(avApiURL)
+    .get(`${serverURL}api/v1/financials/${ticker}`)
     .then(response => {
       return response.body
     })
@@ -86,10 +76,8 @@ export function getAVApiFinancials (ticker) {
 // ------ NEWS THUNK ------
 
 export function getNewsArticles () {
-  const newsURL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${newsKey}`
-
   return request
-    .get(newsURL)
+    .get(`${serverURL}api/v1/news`)
     .then(response => {
       return response.body
     })
