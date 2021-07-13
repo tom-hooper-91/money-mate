@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const serverURL = 'http://localhost:3000/'
+const serverURL = '/'
 
 // ---- internal API functions using Redux ----
 
