@@ -47,7 +47,7 @@ export function deletePosition (id) {
 
 export function getAVApiDaily (setAVData, ticker) { // not in use
   return request
-    .get(`${serverURL}portfolio/api/v1/daily/${ticker}`)
+    .get(`${serverURL}api/v1/daily/${ticker}`)
     .then(response => {
       setAVData(response.body)
       return null
@@ -57,7 +57,7 @@ export function getAVApiDaily (setAVData, ticker) { // not in use
 
 export function getAVApiQuote (ticker) {
   return request
-    .get(`${serverURL}portfolio/api/v1/quote/${ticker}`)
+    .get(`${serverURL}api/v1/quote/${ticker}`)
     .then(response => {
       return response.body
     })
@@ -66,7 +66,7 @@ export function getAVApiQuote (ticker) {
 
 export function getAVApiFinancials (ticker) {
   return request
-    .get(`${serverURL}portfolio/api/v1/financials/${ticker}`)
+    .get(`${serverURL}api/v1/financials/${ticker}`)
     .then(response => {
       return response.body
     })
@@ -77,7 +77,7 @@ export function getAVApiFinancials (ticker) {
 
 export function getNewsArticles () {
   return request
-    .get(`${serverURL}portfolio/api/v1/news`)
+    .get(`${serverURL}api/v1/news`)
     .then(response => {
       return response.body
     })

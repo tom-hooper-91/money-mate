@@ -60,7 +60,6 @@ export function setFinancials (financials) {
 // ----- NEWS ACTION CREATORS ------
 
 export function setNews (news) {
-  console.log('news is ----', news)
   return {
     type: GET_NEWS,
     news
