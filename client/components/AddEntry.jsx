@@ -58,7 +58,7 @@ function AddEntry ({ dispatch, history }) {
                 onChange={(event) => handleChange(event)}/>
             </div>
             <div className="mb-3">
-              <label htmlFor="date_purchased" className="form-label">Number of Shares: </label>
+              <label htmlFor="date_purchased" className="form-label">Date Purchased: </label>
               <input name="date_purchased" type="date" className="form-control" id="date_purchased" value={formData.date_purchased}
                 onChange={(event) => handleChange(event)}/>
             </div>

@@ -9,7 +9,8 @@ function EditEntry ({ dispatch, portfolio }) {
     name: '',
     ticker: '',
     buy_price: 0,
-    number_shares: 0
+    number_shares: 0,
+    date_purchased: 0
   })
 
   useEffect(() => {
@@ -29,7 +30,8 @@ function EditEntry ({ dispatch, portfolio }) {
       name: '',
       ticker: '',
       buy_price: 0,
-      number_shares: 0
+      number_shares: 0,
+      date_purchased: 0
     })
   }
 
@@ -74,6 +76,11 @@ function EditEntry ({ dispatch, portfolio }) {
               <div className="mb-3">
                 <label htmlFor="number_shares" className="form-label">Number of Shares: </label>
                 <input name="number_shares" type="number" className="form-control" id="number_shares" value={formData.number_shares}
+                  onChange={(event) => handleChange(event)}/>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="date_purchased" className="form-label">Date Purchased: </label>
+                <input name="date_purchased" type="date" className="form-control" id="date_purchased" value={formData.date_purchased}
                   onChange={(event) => handleChange(event)}/>
               </div>
               <button type="submit" className="btn btn-outline-light">Update</button>
