@@ -13,7 +13,10 @@ exports.seed = (knex) => {
         console.log(`select setval('${sequence}', (select max(id) from ${table}) + 1);`)
         return knex.raw(`select setval('${sequence}', (select max(id) from ${table}) + 1)`)
       }))
-      .then(Promise.all)
+      .then((r) => {
+        console.log(r)
+        return Promise.all(r)
+      })
       .then(results => {
         console.log(results)
         return null

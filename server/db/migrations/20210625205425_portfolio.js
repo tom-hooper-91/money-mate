@@ -5,6 +5,7 @@ exports.up = function (knex) {
     table.string('ticker')
     table.decimal('buy_price')
     table.decimal('number_shares')
+    table.date('date_purchased')
   })
 }
 

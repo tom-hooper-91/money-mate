@@ -15,7 +15,7 @@ function AddEntry ({ dispatch, history }) {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => { // this works but does not include cateogry which is needed
     event.preventDefault()
     dispatch(addNewPosition(formData))
     setFormData({
