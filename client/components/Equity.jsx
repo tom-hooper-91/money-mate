@@ -1,11 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-function Equity ({ financials }) {
-  const numberWithCommas = (num) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')// use toLocaleString
-  }
+import { numberWithCommas } from '../utils'
 
+function Equity ({ financials }) {
   return (
     <div className="row justify-content-center">
       <div className="col-lg-4 tile rounded shadow">

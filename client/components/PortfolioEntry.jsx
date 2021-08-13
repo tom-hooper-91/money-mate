@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { fetchAVFinancials } from '../actions/index'
 
+import { checkPerformance } from '../utils'
+
 function PortfolioEntry ({ entry, quote, history, dispatch }) {
   const [results, setResults] = useState([])
 
@@ -14,14 +16,6 @@ function PortfolioEntry ({ entry, quote, history, dispatch }) {
   useEffect(() => {
     setResults(checkForNull(quote))// sets local state to global state, removing failed api calls
   }, [])
-
-  const checkPerformance = (quote, entry) => { // sets class depending on daily change info
-    const equity = quote.find(pos => pos['01. symbol'] === entry.ticker)
-    if (equity !== undefined) {
-      if (Number(equity['09. change'] > 0)) return 'gainer'
-      else return 'loser'
-    }
-  }
 
   const handeClick = () => {
     dispatch(fetchAVFinancials(entry.ticker))
@@ -53,6 +47,7 @@ function PortfolioEntry ({ entry, quote, history, dispatch }) {
               : ' Unavailable'
             }
             </p>
+            <p><em>Date Purchased:</em> {entry.date_purchased}</p>
             <hr />
           </>
           : <h4>Loading....</h4>
