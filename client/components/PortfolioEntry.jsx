@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 
 import { fetchAVFinancials } from '../actions/index'
 
-import { checkPerformance, refactorDate } from '../utils'
+import { checkDailyPerformance, checkPricePerformance, refactorDate, checkResults } from '../utils'
 
 function PortfolioEntry ({ entry, quote, history, dispatch }) {
   const [results, setResults] = useState([])
+
+  const orignalValue = entry.buy_price * entry.number_shares
 
   const checkForNull = (quote) => {
     const arr = quote.filter(pos => pos !== undefined)
@@ -31,21 +33,25 @@ function PortfolioEntry ({ entry, quote, history, dispatch }) {
             <h4>{entry.name}</h4>
             <p><em>Ticker:</em> {entry.ticker}</p>
             <p><em>Buy Price:</em> ${entry.buy_price}</p>
-            <p><em>Current Price:</em> ${results.find(pos => pos['01. symbol'] === entry.ticker) // if api info is available
+            <p><em>Current Price:</em> ${checkResults(results, entry) // if api date is available
               ? results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']
               : ' Unavailable'
             }
             </p>
             <p><em>Number of Shares:</em> {entry.number_shares}</p>
-            <p><em>Daily Change:</em> <span className={checkPerformance(results, entry)}> {results.find(pos => pos['01. symbol'] === entry.ticker)// if api info is available
+            <p><em>Daily Change:</em> <span className={checkDailyPerformance(results, entry)}> {checkResults(results, entry)// if api info is available
               ? results.find(pos => pos['01. symbol'] === entry.ticker)['10. change percent']
               : ' Unavailable'
             }
             </span></p>
-            <p><em>Current Value:</em> ${results.find(pos => pos['01. symbol'] === entry.ticker)
-              ? Number(entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']).toFixed(2)
-              : ' Unavailable'
-            }
+            <p><em>Original Value:</em><span> ${orignalValue.toFixed(2)}</span></p>
+            <p><em>Current Value:</em><span className={checkResults(results, entry)// if api data is available
+              ? checkPricePerformance(orignalValue, entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price'])// set className to be looser or gainer based on values
+              : ''
+            }> ${results.find(pos => pos['01. symbol'] === entry.ticker)
+                ? Number(entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']).toFixed(2)
+                : ' Unavailable'
+              }</span>
             </p>
             <p><em>Date Purchased:</em> {refactorDate(entry.date_purchased)}</p>
             <hr />
