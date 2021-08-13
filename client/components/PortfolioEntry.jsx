@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { fetchAVFinancials } from '../actions/index'
 
-import { checkPerformance } from '../utils'
+import { checkPerformance, refactorDate } from '../utils'
 
 function PortfolioEntry ({ entry, quote, history, dispatch }) {
   const [results, setResults] = useState([])
@@ -47,7 +47,7 @@ function PortfolioEntry ({ entry, quote, history, dispatch }) {
               : ' Unavailable'
             }
             </p>
-            <p><em>Date Purchased:</em> {entry.date_purchased}</p>
+            <p><em>Date Purchased:</em> {refactorDate(entry.date_purchased)}</p>
             <hr />
           </>
           : <h4>Loading....</h4>

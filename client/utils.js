@@ -9,3 +9,8 @@ export const checkPerformance = (quote, entry) => { // sets class for styling ba
 export const numberWithCommas = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')// use toLocaleString
 }
+
+export const refactorDate = (date) => {
+  const splitDate = date.split('-')
+  return `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`
+}
