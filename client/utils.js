@@ -7,14 +7,14 @@ export const checkDailyPerformance = (quote, entry) => { // sets class for styli
   }
 }
 
-export const checkPricePerformance = (originalValue, currentValue) => {
+export const checkPerformanceReturnClass = (originalValue, currentValue) => {
   return originalValue < currentValue
     ? 'gainer'
-    : 'looser'
+    : 'loser'
 }
 
 export const numberWithCommas = (num) => {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')// use toLocaleString
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')// use toLocaleString?
 }
 
 export const refactorDate = (date) => {
@@ -25,3 +25,15 @@ export const refactorDate = (date) => {
 export const checkResults = (results, entry) => {
   return !!results.find(pos => pos['01. symbol'] === entry.ticker)
 }
+
+export const checkForNull = (quote) => {
+  return quote.filter(pos => pos !== undefined)
+}
+
+export const displayCurrentValue = (entry, results) => { // return current value of shares
+  return Number(entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']).toFixed(2)
+}
+
+export const percentageDiff = (a, b) => {
+  return (100 * Math.abs((a - b) / ((a + b) / 2))).toFixed(2)
+ }

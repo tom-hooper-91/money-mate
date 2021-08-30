@@ -3,17 +3,12 @@ import { connect } from 'react-redux'
 
 import { fetchAVFinancials } from '../actions/index'
 
-import { checkDailyPerformance, checkPricePerformance, refactorDate, checkResults } from '../utils'
+import { checkDailyPerformance, checkPerformanceReturnClass, refactorDate, checkResults, checkForNull, percentageDiff, displayCurrentValue } from '../utils'
 
 function PortfolioEntry ({ entry, quote, history, dispatch }) {
   const [results, setResults] = useState([])
 
   const orignalValue = entry.buy_price * entry.number_shares
-
-  const checkForNull = (quote) => {
-    const arr = quote.filter(pos => pos !== undefined)
-    return arr
-  }
 
   useEffect(() => {
     setResults(checkForNull(quote))// sets local state to global state, removing failed api calls
@@ -32,9 +27,9 @@ function PortfolioEntry ({ entry, quote, history, dispatch }) {
             <hr />
             <h4>{entry.name}</h4>
             <p><em>Ticker:</em> {entry.ticker}</p>
-            <p><em>Buy Price:</em> ${entry.buy_price}</p>
+            <p><em>Buy Price:</em> ${entry.buy_price.toFixed(2)}</p>
             <p><em>Current Price:</em> ${checkResults(results, entry) // if api date is available
-              ? results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']
+              ? Number(results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']).toFixed(2)
               : ' Unavailable'
             }
             </p>
@@ -46,10 +41,10 @@ function PortfolioEntry ({ entry, quote, history, dispatch }) {
             </span></p>
             <p><em>Original Value:</em><span> ${orignalValue.toFixed(2)}</span></p>
             <p><em>Current Value:</em><span className={checkResults(results, entry)// if api data is available
-              ? checkPricePerformance(orignalValue, entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price'])// set className to be looser or gainer based on values
+              ? checkPerformanceReturnClass(orignalValue, entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price'])// set className to be looser or gainer based on values
               : ''
             }> ${results.find(pos => pos['01. symbol'] === entry.ticker)
-                ? Number(entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']).toFixed(2)
+                ? `${displayCurrentValue(entry, results)} (${percentageDiff(orignalValue, Number(entry.number_shares * results.find(pos => pos['01. symbol'] === entry.ticker)['05. price']))}%)`
                 : ' Unavailable'
               }</span>
             </p>
